@@ -12,12 +12,11 @@ const Event = ({event}) => {
             style={styles.eventContainer}
             onPress={() => navigation.navigate('EventPage', {event: event})}// Navigate and pass event ID or other necessary data
         >
-            <Image source={{uri: event.imageUri}} style={styles.image}/>
+            <Image source={{uri: event.imageUri}} style={styles.image} resizeMode="contain"/>
             <View style={styles.detailsContainer}>
                 <Text style={styles.title}>{event.title}</Text>
-                <Text style={styles.details}>Location: {event.location}</Text>
-                <Text style={styles.details}>Description: {event.description}</Text>
-                <Text style={styles.details}>Start: {event.startTime} - End: {event.endTime}</Text>
+                <Text style={styles.details}>{event.description}</Text>
+                <Text style={styles.details}>{event.location} @ {event.startTime}-{event.endTime}</Text>
                 <Text style={styles.details}>Spots Left: {event.spotsLeft}</Text>
             </View>
         </TouchableOpacity>
@@ -28,10 +27,11 @@ const styles = StyleSheet.create({
     eventContainer: {
         flexDirection: 'row',
         width: '100%', // Set the width to 300px
-        height: 400, // Set the height to 100px
+        height: 200, // Set the height to 100px
         marginBottom: 10,
         backgroundColor: '#f0f0f0', // Example background color
         borderRadius: 10,
+        padding: 10
     },
     image: {
         width: '50%', // Image takes half the width

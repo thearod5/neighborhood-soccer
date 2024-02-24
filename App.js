@@ -1,15 +1,9 @@
-import React, {createContext, useContext} from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {ThemeProvider} from './src/config/themeProvider';
 import {darkTheme} from "./src/config/theme";
 import {AuthProvider} from './src/context/authContext';
-import AppStack from "./src/appStack";
-
-
-const ThemeContext = createContext();
-
-
-export const useTheme = () => useContext(ThemeContext);
+import {AppStack} from "./src/appNavigation";
 
 
 function App() {

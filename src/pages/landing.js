@@ -1,6 +1,7 @@
 import React from 'react';
-import {Button, Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {useTheme} from '../config/themeProvider';
+import CustomButton from "../components/customButton";
 
 const LandingPage = ({navigation}) => {
     const theme = useTheme();
@@ -9,10 +10,11 @@ const LandingPage = ({navigation}) => {
             <Image source={require('../../assets/logo-transparent.png')} style={styles.logo}/>
             <Text style={[styles.textStyle, {color: theme.text}]}>Neighborhood Soccer</Text>
             <View style={styles.buttonContainer}>
-                <Button
-                    title="Get Started"
+                <CustomButton
+                    title="Login"
                     onPress={() => navigation.navigate('Login')}
-                    color={theme.button} // Adjust this as needed based on your theme
+                    buttonColor={theme.soft} // Use your theme's button color
+                    textColor={theme.text} // Text color is now customizable
                 />
             </View>
         </View>

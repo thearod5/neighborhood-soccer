@@ -3,9 +3,7 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {useTheme} from '../config/themeProvider';
 
 const EventPage = ({route}) => {
-    console.log("Route", route)
     const {event} = route.params; // Accessing the event data passed from the previous screen
-    console.log("Event", event)
     const theme = useTheme();
 
     return (

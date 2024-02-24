@@ -1,5 +1,9 @@
 import React, {createContext, useContext, useState} from 'react';
 
+const defaultUser = {
+    username: "thearod5",
+    password: "photo"
+}
 const AppAuthContext = createContext();
 
 export const useAuth = () => useContext(AppAuthContext);
