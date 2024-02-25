@@ -1,21 +1,16 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {darkTheme, ThemeProvider} from 'theme/index';
-import {AuthProvider} from 'context/authContext';
-import {AppStack} from "stack/appStack";
-
+import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import { AppStack } from "stack/appStack";
+import { darkTheme, ThemeProvider } from "theme/index";
 
 function App() {
-    return (
-        <ThemeProvider theme={darkTheme}>
-            <AuthProvider>
-                <NavigationContainer>
-                    <AppStack/>
-                </NavigationContainer>
-            </AuthProvider>
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <NavigationContainer>
+        <AppStack />
+      </NavigationContainer>
+    </ThemeProvider>
+  );
 }
-
 
 export default App;

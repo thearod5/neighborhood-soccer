@@ -1,33 +1,33 @@
-import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {AuthContextType, useAuth} from "context/authContext";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import UserIcon from "components/nav/userIcon";
-import {ScreenConfig} from "./types";
-import {AuthScreens} from "./authScreens";
-import {PublicScreens} from "./publicScreens";
+import React from "react";
+import { AppScreens, ScreenConfig } from "./screenConfigurations";
 
-
+import LoadingPage from "components/common/loading";
+import { loadingState } from "state/loadingState";
 const Stack = createNativeStackNavigator();
 
-
 export const AppStack: React.FC = () => {
-    const {user} = useAuth() as AuthContextType;
+  const isLoading = loadingState.isLoading;
+  const screenOptions = (screen: ScreenConfig) => ({
+    ...screen.options,
+    ...{ headerRight: () => <UserIcon /> },
+  });
 
-    const screenOptions = (screen: ScreenConfig) => ({
-        ...screen.options,
-        ...(screen.name === 'List' && {headerRight: () => <UserIcon/>})
-    });
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
-    return (
-        <Stack.Navigator initialRouteName="LandingPage">
-            {(user ? Object.values(AuthScreens) : Object.values(PublicScreens)).map((screen) => (
-                <Stack.Screen
-                    key={screen.name}
-                    name={screen.name}
-                    component={screen.component}
-                    options={screenOptions(screen)}
-                />
-            ))}
-        </Stack.Navigator>
-    );
+  return (
+    <Stack.Navigator initialRouteName="EventUsers">
+      {Object.values(AppScreens).map((screen) => (
+        <Stack.Screen
+          key={screen.name}
+          name={screen.name}
+          component={screen.component}
+          options={screenOptions(screen)}
+        />
+      ))}
+    </Stack.Navigator>
+  );
 };

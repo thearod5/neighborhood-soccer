@@ -1,20 +1,18 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 export const AboutUsPage = () => {
-    return (
-        <View style={styles.container}>
-            <Text>History of Soccer Club</Text>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <Text>History of Soccer Club</Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
-
-

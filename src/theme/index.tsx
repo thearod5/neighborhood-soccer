@@ -1,31 +1,29 @@
-import React, {createContext, ReactNode, useContext} from 'react';
+import React, { createContext, ReactNode, useContext } from "react";
 
-export interface Theme {
-    text: string;
-    background: string;
-    primary: string;
-    emphasis: string;
+export interface AppTheme {
+  text: string;
+  background: string;
+  primary: string;
+  emphasis: string;
 }
 
-export const darkTheme: Theme = {
-    text: '#ffffff',
-    background: '#121212',
-    primary: "#B3DDF2", //chicago blue
-    emphasis: '#FF0000' //chicago red
+export const darkTheme: AppTheme = {
+  text: "#ffffff",
+  background: "#121212",
+  primary: "#6ad5fc", //chicago blue
+  emphasis: "#DE033F", //chicago red
 };
 
 interface ThemeProviderProps {
-    children: ReactNode;
-    theme: Theme;
+  children: ReactNode;
+  theme: AppTheme;
 }
 
+const ThemeContext = createContext<AppTheme>(darkTheme);
 
-const ThemeContext = createContext<Theme>(darkTheme);
+export const useAppTheme = () => useContext(ThemeContext);
 
-export const useTheme = () => useContext(ThemeContext);
-
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({children, theme}) => (
-    <ThemeContext.Provider value={theme}>
-        {children}
-    </ThemeContext.Provider>
-);
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
+  children,
+  theme,
+}) => <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>;

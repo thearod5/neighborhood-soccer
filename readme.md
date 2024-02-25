@@ -1,18 +1,47 @@
-# Use Cases
+# User Stories
 
-1. As a user, I want to be able to create an account
-2. As a user, I want to be able to register for events
-    1. The system shall require users to be logged in.
-    2. The system shall finish registration once the user has paid.
-    3. The system shall be able to prove that a user has paid for an event.
-    4. The system will put users on the wait list if the event is full.
-        1. The system shall not charge users that were added to the wait list.
-3. As an admin, I want to be able to verify that a user has registered for the event.
-    1. The system shall provide a way for admin to quickly check-in users that are registered for an event.
+1. As a user, I want to be able to create an account.
+2. As a user, I want to be able to register for events.
+3. As an admin, I want to be able to create an event.
+4. As an admin, I want to be able to verify that a user has registered for the event.
+
+# Flow
+
+## Account Setup
+
+1. Landing on Account Setup Page
+2. User types in username
+3. Display user options
+   1. If username exists, then show password
+   2. If username does not exist, then show email and password
+
+## Signing up for event
+
+1. Open app
+2. Landing page
+   1. (If account exists) -> Link to events
+   2. (Else) -> Link to `Account Setup`
+3. User selects events
+4. Event list is displayed.
+5. User selects event
+6. User selects register button
+7. User completes registration information
+8. User completes payment on stripe page.
+9. Registration confirmation is displayed.
 
 # TODO
 
+## App
+
+- [ ] Create registration page
+- [ ] Create stripe account
+- [ ] Create deployment account and payment setup
+- [ ] Setup BEND
+
+## Developer
+
 - [x] Convert to type script.
-- [ ] Create store for holding user.
+- [x] Create store for holding user.
+- [x] Automatic typescript integration in IDE.
+- [ ] Create registration page
 - [ ] Find better way to enforce non-auth access
-- [ ] Automatic typescript integration in IDE.

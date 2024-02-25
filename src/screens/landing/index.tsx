@@ -1,53 +1,86 @@
-import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import {Theme, useTheme} from 'theme/index';
+import { StackNavigationProp } from "@react-navigation/stack";
 import CustomButton from "components/common/customButton";
-import {StackNavigationProp} from '@react-navigation/stack';
-import {AppStackParamList} from "stack/types";
-
+import React from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { AppStackParamList } from "stack/types";
+import { userState } from "state/userState";
+import { AppTheme, useAppTheme } from "theme/index";
 
 type LandingPageProps = {
-    navigation: StackNavigationProp<AppStackParamList, 'Landing'>;
+  navigation: StackNavigationProp<AppStackParamList, "Landing">;
 };
 
-export const LandingScreen: React.FC<LandingPageProps> = ({navigation}) => {
-    const theme: Theme = useTheme();
-    return (
-        <View style={[styles.container, {backgroundColor: theme.background}]}>
-            <Image source={require('../../assets/logo-transparent.png')} style={styles.logo}/>
-            <Text style={[styles.textStyle, {color: theme.text}]}>Neighborhood Soccer</Text>
-            <View style={styles.buttonContainer}>
-                <CustomButton
-                    title="Login"
-                    onPress={() => navigation.navigate('Login')}
-                    buttonColor={theme.primary} // Use your theme's button color
-                    textColor={theme.text} // Text color is now customizable
-                />
-            </View>
-        </View>
+export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
+  const user = userState.user;
+  const theme: AppTheme = useAppTheme();
+
+  let body;
+  let adminButton = undefined;
+  if (user === null) {
+    body = (
+      <CustomButton
+        title="Login"
+        onPress={() => navigation.navigate("Login")}
+        buttonColor={theme.primary} // Use your theme's button color
+        textColor={theme.text} // Text color is now customizable
+      />
     );
+  } else {
+    body = (
+      <CustomButton
+        title="Events"
+        onPress={() => navigation.navigate("EventList")}
+        buttonColor={theme.primary} // Use your theme's button color
+        textColor={theme.text} // Text color is now customizable
+      />
+    );
+    if (user.isAdmin) {
+      adminButton = (
+        <CustomButton
+          title="Create Event"
+          onPress={() => navigation.navigate("EventCreate")}
+          buttonColor={theme.emphasis} // Use your theme's button color
+          textColor={theme.text} // Text color is now customizable
+        />
+      );
+    }
+  }
+  return (
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+      <Image
+        source={require("../../../assets/logo-transparent.png")}
+        style={styles.logo}
+      />
+      <Text style={[styles.textStyle, { color: theme.text }]}>
+        Neighborhood Soccer
+      </Text>
+      <View style={styles.buttonContainer}>
+        {body}
+        {adminButton}
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20, // Adds padding around the outer View for better spacing
-    },
-    logo: {
-        width: 200,
-        height: 200,
-        marginBottom: 30, // Adds space below the logo
-    },
-    textStyle: {
-        fontSize: 24, // Increased font size for better readability
-        fontWeight: 'bold',
-        marginBottom: 20, // Adds space below the text
-    },
-    buttonContainer: {
-        width: 200, // Sets a width for the button for better control
-        marginTop: 20, // If needed, adjust for spacing above the button
-    },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20, // Adds padding around the outer View for better spacing
+  },
+  logo: {
+    width: 200,
+    height: 200,
+    marginBottom: 30, // Adds space below the logo
+  },
+  textStyle: {
+    fontSize: 24, // Increased font size for better readability
+    fontWeight: "bold",
+    marginBottom: 20, // Adds space below the text
+  },
+  buttonContainer: {
+    width: 200, // Sets a width for the button for better control
+    marginTop: 20, // If needed, adjust for spacing above the button
+  },
 });
-
