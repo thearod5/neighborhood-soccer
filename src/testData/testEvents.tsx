@@ -12,15 +12,7 @@ export const defaultEvents: Event[] = [
     startTime: "8:00 PM",
     endTime: "9:30 PM",
     spotsLeft: 5,
-    users: [
-      adminUser,
-      adminUser,
-      adminUser,
-      adminUser,
-      adminUser,
-      adminUser,
-      adminUser,
-    ],
+    users: [adminUser],
   },
   {
     id: 2,
