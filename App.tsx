@@ -1,5 +1,4 @@
 import { NavigationContainer } from "@react-navigation/native";
-import React from "react";
 import { AppStack } from "stack/appStack";
 import { darkTheme, ThemeProvider } from "theme/index";
 
