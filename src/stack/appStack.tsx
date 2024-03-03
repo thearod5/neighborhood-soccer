@@ -19,7 +19,7 @@ export const AppStack: React.FC = () => {
   }
 
   return (
-    <Stack.Navigator initialRouteName="Event">
+    <Stack.Navigator initialRouteName="Account">
       {Object.values(AppScreens).map((screen) => (
         <Stack.Screen
           key={screen.name}

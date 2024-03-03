@@ -28,24 +28,28 @@ export const AccountPage: React.FC<AccountPageProps> = ({ navigation }) => {
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
       <View style={[styles.centerRow]}>
-        <Image
-          source={{ uri: user.profileImage }}
-          style={styles.image}
-          resizeMode="contain"
-        />
+        <View style={styles.centerColumn}>
+          <Image
+            source={{ uri: user.profileImage }}
+            style={styles.image}
+            resizeMode="contain"
+          />
+          <Text style={[styles.text, { color: theme.text }]}>
+            {user.username}
+          </Text>
+          <Text style={[styles.text, { color: theme.link }]}>{user.email}</Text>
+        </View>
       </View>
-      <View style={[styles.textContainer]}>
-        <Text style={[styles.text, { color: theme.text }]}>
-          Username: {user.username}
-        </Text>
-        <Text style={[styles.text, { color: theme.text }]}>
-          Email: {user.email}
-        </Text>
+      <View style={[styles.centerRow]}>
+        <View style={[styles.bioContainer]}>
+          <Text style={[styles.text, { color: theme.text }]}>{user.bio}</Text>
+        </View>
       </View>
       <View style={[styles.centerRow]}>
         <CustomButton
           title="Logout"
-          buttonColor={theme.emphasis}
+          buttonColor={theme.background}
+          textColor={theme.emphasis}
           onPress={userState.logout}
         />
       </View>
@@ -59,22 +63,27 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     height: "100%",
   },
-  textContainer: {
+  image: {
+    height: 250, // Image takes half the width
+    width: 250, // Image takes full height
+    marginRight: 10,
+    borderRadius: 10, // Adjust as needed
+  },
+  bioContainer: {
     flexDirection: "column",
-    padding: 25,
+    width: "50%",
   },
   centerRow: {
     flexDirection: "row",
     justifyContent: "center",
-    padding: 10,
+  },
+  centerColumn: {
+    flexDirection: "column",
+    alignItems: "center",
+    margin: 25,
   },
   text: {
     fontSize: 18,
-  },
-  image: {
-    width: 150, // Image takes half the width
-    height: 150, // Image takes full height
-    marginRight: 10,
-    borderRadius: 10, // Adjust as needed
+    padding: 10,
   },
 });
