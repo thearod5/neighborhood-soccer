@@ -1,13 +1,12 @@
 // Define authenticated screens
-import { AboutUsPage } from "screens/aboutus";
-import { AccountPage } from "screens/account";
-import { LoginScreen } from "screens/account/login";
-import { CreateEvent } from "screens/eventCreation";
-import { EventPage } from "screens/event";
-import { EventList } from "screens/eventList";
-import { EventUsers } from "screens/eventUsers";
-import { LandingScreen } from "screens/landing";
-import { EventRegistrationPage } from "screens/eventRegistration";
+import { AccountPage } from "screens/account/accountScreen";
+import { EventScreen } from "screens/event/eventScreen";
+import { CreateEvent } from "screens/eventCreation/evenCreationScreen";
+import { EventListScreen } from "screens/eventList/eventListScreen";
+import { EventRegistrationScreen } from "screens/eventRegistration/eventRegistrationScreen";
+import { EventUsersScreen } from "screens/eventUsers/evenUsersScreen";
+import { LandingScreen } from "screens/landing/landingScreen";
+import { LoginScreen } from "screens/login/loginScreen";
 
 export interface ScreenConfig {
   name: string;
@@ -26,14 +25,9 @@ export const AppScreens: Record<string, ScreenConfig> = {
     component: LoginScreen,
     options: { title: "Account" },
   },
-  About: {
-    name: "About",
-    component: AboutUsPage,
-    options: { title: "About Us" },
-  },
   EventList: {
     name: "EventList",
-    component: EventList,
+    component: EventListScreen,
     options: { title: "Neighborhood Soccer" },
   },
   Account: {
@@ -43,17 +37,17 @@ export const AppScreens: Record<string, ScreenConfig> = {
   },
   Event: {
     name: "Event",
-    component: EventPage,
+    component: EventScreen,
     options: { title: "Event Details" },
   },
   EventUsers: {
     name: "EventUsers",
-    component: EventUsers,
+    component: EventUsersScreen,
     options: { title: "Event Users" },
   },
   EventRegistration: {
     name: "EventRegistration",
-    component: EventRegistrationPage,
+    component: EventRegistrationScreen,
     options: { title: "Register for Event" },
   },
   EventCreation: {
@@ -72,5 +66,5 @@ export type AppStackParamList = {
   Event: { event: Event };
   EventUsers: undefined;
   EventRegistration: undefined;
-  EventCreation: undefined;
+  EventCreate: undefined;
 };

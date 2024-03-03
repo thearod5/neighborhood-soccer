@@ -1,6 +1,6 @@
 import React from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { useAppTheme } from "theme/index";
+import { useAppTheme } from "theme/appThemeProvider";
 
 const LoadingPage = () => {
   const theme = useAppTheme();

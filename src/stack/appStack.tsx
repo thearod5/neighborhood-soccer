@@ -5,7 +5,9 @@ import { AppScreens, ScreenConfig } from "./screenConfigurations";
 
 import LoadingPage from "components/common/loading";
 import { loadingState } from "state/loadingState";
+import { DEBUG_SCREEN, IS_DEBUG } from "./debug";
 const Stack = createNativeStackNavigator();
+const DefaultScreen = IS_DEBUG ? DEBUG_SCREEN : "Landing";
 
 export const AppStack: React.FC = () => {
   const isLoading = loadingState.isLoading;
@@ -19,7 +21,7 @@ export const AppStack: React.FC = () => {
   }
 
   return (
-    <Stack.Navigator initialRouteName="Event">
+    <Stack.Navigator initialRouteName={DefaultScreen}>
       {Object.values(AppScreens).map((screen) => (
         <Stack.Screen
           key={screen.name}

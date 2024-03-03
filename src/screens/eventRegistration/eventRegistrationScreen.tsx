@@ -2,22 +2,23 @@ import CustomButton from "components/common/customButton";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { defaultEvents } from "testData/testEvents";
-import { useAppTheme } from "theme/index";
+import { useAppTheme } from "theme/appThemeProvider";
+import { commonStyles } from "theme/commonStyles";
 
 function startPayment() {}
 
-export const EventRegistrationPage = () => {
+export const EventRegistrationScreen = () => {
   const event = defaultEvents[0];
   const theme = useAppTheme();
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <View style={[styles.centerRow]}>
-        <Text style={[styles.title, { color: theme.text }]}>{event.title}</Text>
-      </View>
-      <View style={[styles.centerRow]}>
+    <View
+      style={[commonStyles.pageContainer, { justifyContent: "space-around" }]}
+    >
+      <Text style={[styles.title, { color: theme.text }]}>{event.title}</Text>
+      <View style={[commonStyles.centerRow, { width: theme.targetWidth }]}>
         <Image source={{ uri: event.imageUri }} style={styles.image} />
       </View>
-      <View style={[styles.centerRow]}>
+      <View style={[commonStyles.centerRow, { width: theme.targetWidth }]}>
         <CustomButton
           customStyles={styles.button}
           onPress={startPayment}
@@ -31,11 +32,6 @@ export const EventRegistrationPage = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "column",
-    justifyContent: "space-between",
-    height: "100%",
-  },
   title: {
     fontSize: 24,
     margin: 10,
@@ -50,9 +46,4 @@ const styles = StyleSheet.create({
     height: "10%",
   },
   button: { width: "75%" },
-  //utilities
-  centerRow: {
-    flexDirection: "row",
-    justifyContent: "center",
-  },
 });

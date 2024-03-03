@@ -4,9 +4,10 @@ import CustomButton from "components/common/customButton";
 
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import { AppStackParamList } from "stack/types";
+import { AppStackParamList } from "stack/screenConfigurations";
 import { userState } from "state/userState";
-import { useAppTheme } from "theme/index";
+import { useAppTheme } from "theme/appThemeProvider";
+import { commonStyles } from "theme/commonStyles";
 interface AccountPageProps {
   navigation: StackNavigationProp<AppStackParamList, "Account">;
 }
@@ -26,8 +27,8 @@ export const AccountPage: React.FC<AccountPageProps> = ({ navigation }) => {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <View style={[styles.centerRow]}>
+    <View style={commonStyles.pageContainer}>
+      <View style={[commonStyles.centerRow]}>
         <View style={styles.centerColumn}>
           <Image
             source={{ uri: user.profileImage }}
@@ -40,12 +41,12 @@ export const AccountPage: React.FC<AccountPageProps> = ({ navigation }) => {
           <Text style={[styles.text, { color: theme.link }]}>{user.email}</Text>
         </View>
       </View>
-      <View style={[styles.centerRow]}>
+      <View style={[commonStyles.centerRow]}>
         <View style={[styles.bioContainer]}>
           <Text style={[styles.text, { color: theme.text }]}>{user.bio}</Text>
         </View>
       </View>
-      <View style={[styles.centerRow]}>
+      <View style={[commonStyles.centerRow]}>
         <CustomButton
           title="Logout"
           buttonColor={theme.background}
@@ -58,11 +59,6 @@ export const AccountPage: React.FC<AccountPageProps> = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "column",
-    justifyContent: "space-between",
-    height: "100%",
-  },
   image: {
     height: 250, // Image takes half the width
     width: 250, // Image takes full height
@@ -73,10 +69,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     width: "50%",
   },
-  centerRow: {
-    flexDirection: "row",
-    justifyContent: "center",
-  },
+
   centerColumn: {
     flexDirection: "column",
     alignItems: "center",

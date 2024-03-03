@@ -4,7 +4,8 @@ import { Event } from "domain/event";
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { eventState } from "state/eventState";
-import { useAppTheme } from "theme/index";
+import { useAppTheme } from "theme/appThemeProvider";
+import { commonStyles } from "theme/commonStyles";
 
 export const CreateEvent: React.FC = () => {
   const [name, setName] = useState("");
@@ -28,11 +29,11 @@ export const CreateEvent: React.FC = () => {
     navigation.navigate("EventList");
   }
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <View style={[styles.centerRow]}>
+    <View style={commonStyles.pageContainer}>
+      <View style={[commonStyles.centerRow]}>
         <Text style={styles.title}>Event</Text>
       </View>
-      <View style={[styles.centerRow]}>
+      <View style={[commonStyles.centerRow]}>
         <View style={[styles.inputContainer]}>
           <TextInput
             placeholder="Name"
@@ -58,7 +59,7 @@ export const CreateEvent: React.FC = () => {
         </View>
       </View>
 
-      <View style={[styles.centerRow]}>
+      <View style={[commonStyles.centerRow]}>
         <CustomButton
           title="Create"
           customStyles={styles.button}
@@ -72,13 +73,6 @@ export const CreateEvent: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    width: "100%",
-    flexDirection: "column",
-    alignContent: "center",
-    justifyContent: "space-around",
-  },
   title: {
     fontSize: 24,
     color: "white",
@@ -101,10 +95,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: "100%",
     marginBottom: 10,
-  },
-  //utilities
-  centerRow: {
-    flexDirection: "row",
-    justifyContent: "center",
   },
 });

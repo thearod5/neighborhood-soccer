@@ -1,14 +1,20 @@
 // src/pages/LoginScreen.js
-import { CommonActions, useNavigation } from "@react-navigation/native";
+import { CommonActions } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import CustomButton from "components/common/customButton";
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
+import { AppStackParamList } from "stack/screenConfigurations";
 import { userState } from "state/userState";
-import { useAppTheme } from "theme/index";
+import { useAppTheme } from "theme/appThemeProvider";
+import { commonStyles } from "theme/commonStyles";
 
-export const LoginScreen = () => {
+interface LoginScreenProps {
+  navigation: StackNavigationProp<AppStackParamList, "Login">;
+}
+
+export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const theme = useAppTheme();
-  const navigation = useNavigation();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +35,10 @@ export const LoginScreen = () => {
 
   return (
     <View
-      style={[styles.outerContainer, { backgroundColor: theme.background }]}
+      style={[
+        commonStyles.pageContainer,
+        { backgroundColor: theme.background },
+      ]}
     >
       <View style={[styles.innerContainer]}>
         <Text style={styles.title}>Create Account or Login</Text>
@@ -63,12 +72,6 @@ export const LoginScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  outerContainer: {
-    height: "100%",
-    flexDirection: "column",
-    justifyContent: "center", // Align children vertically in the center
-    alignItems: "center", // Align children horizontally in the center
-  },
   innerContainer: {},
   title: {
     color: "white",

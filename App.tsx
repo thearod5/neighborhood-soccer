@@ -1,7 +1,8 @@
 import "@expo/metro-runtime"; // enables hot refresh
 import { NavigationContainer } from "@react-navigation/native";
 import { AppStack } from "stack/appStack";
-import { darkTheme, ThemeProvider } from "theme/index";
+import { ThemeProvider } from "theme/appThemeProvider";
+import { darkTheme } from "theme/appTheme";
 
 function App() {
   return (

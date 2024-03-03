@@ -2,15 +2,17 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import CustomButton from "components/common/customButton";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import { AppStackParamList } from "stack/types";
+import { AppStackParamList } from "stack/screenConfigurations";
 import { userState } from "state/userState";
-import { AppTheme, useAppTheme } from "theme/index";
+import { useAppTheme } from "theme/appThemeProvider";
+import { commonStyles } from "theme/commonStyles";
+import { AppTheme } from "theme/types";
 
-type LandingPageProps = {
+type LandingScreenProps = {
   navigation: StackNavigationProp<AppStackParamList, "Landing">;
 };
 
-export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
+export const LandingScreen: React.FC<LandingScreenProps> = ({ navigation }) => {
   const user = userState.user;
   const theme: AppTheme = useAppTheme();
 
@@ -29,6 +31,7 @@ export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
     body = (
       <CustomButton
         title="Play"
+        customStyles={{ width: theme.targetWidth }}
         onPress={() => navigation.navigate("EventList")}
         buttonColor={theme.text} // Use your theme's button color
         textColor={theme.background} // Text color is now customizable
@@ -38,6 +41,7 @@ export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
       adminButton = (
         <CustomButton
           title="Admin Panel"
+          customStyles={{ width: theme.targetWidth }}
           onPress={() => navigation.navigate("EventCreate")}
           buttonColor={theme.primary} // Use your theme's button color
           textColor={theme.background} // Text color is now customizable
@@ -46,17 +50,24 @@ export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
     }
   }
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Image
-        source={require("../../../assets/logo-transparent.png")}
-        style={styles.logo}
-      />
-      <Text style={[styles.textStyle, { color: theme.text }]}>
-        Neighborhood Soccer
-      </Text>
-      <View style={(styles.buttonContainer, { width: theme.targetWidth })}>
-        {body}
-        {adminButton}
+    <View style={[commonStyles.pageContainer]}>
+      <View
+        style={[
+          commonStyles.fullHeight,
+          commonStyles.columnContainer,
+          {
+            width: theme.targetWidth,
+          },
+        ]}
+      >
+        <View style={[commonStyles.columnContainer, styles.container]}>
+          <Image source={require("../../../assets/logo-transparent.png")} />
+          <Text style={[theme.title, styles.title]}>Neighborhood Soccer</Text>
+          <View style={[commonStyles.fullWidth, commonStyles.columnContainer]}>
+            {body}
+            {adminButton}
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -64,22 +75,12 @@ export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20, // Adds padding around the outer View for better spacing
+    padding: 20,
+    marginTop: 30,
+    marginBottom: 30,
   },
-  logo: {
-    width: 200,
-    height: 200,
-    marginBottom: 30, // Adds space below the logo
+  title: {
+    textAlign: "center",
   },
-  textStyle: {
-    fontSize: 24, // Increased font size for better readability
-    fontWeight: "bold",
-    marginBottom: 20, // Adds space below the text
-  },
-  buttonContainer: {
-    marginTop: 20, // If needed, adjust for spacing above the button
-  },
+  buttonContainer: {},
 });

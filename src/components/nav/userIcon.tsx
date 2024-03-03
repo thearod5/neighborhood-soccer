@@ -5,7 +5,7 @@ import { StyleSheet, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { AppStackParamList } from "stack/types";
 import { userState } from "state/userState";
-import { useAppTheme } from "theme/index";
+import { useAppTheme } from "theme/appThemeProvider";
 
 const UserIcon: React.FC = () => {
   const theme = useAppTheme();

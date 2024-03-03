@@ -45,3 +45,5 @@
 - [x] Automatic typescript integration in IDE.
 - [ ] Create registration page
 - [ ] Find better way to enforce non-auth access
+- [ ] Create common styling for pages
+- [ ] Be able to easily debug pages
