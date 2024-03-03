@@ -5,8 +5,10 @@ import { StyleSheet, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { AppStackParamList } from "stack/types";
 import { userState } from "state/userState";
+import { useAppTheme } from "theme/index";
 
 const UserIcon: React.FC = () => {
+  const theme = useAppTheme();
   const navigation =
     useNavigation<NativeStackNavigationProp<AppStackParamList>>();
   if (userState.user === null) {
@@ -16,7 +18,8 @@ const UserIcon: React.FC = () => {
     <View style={styles.container}>
       <Icon
         name="account-circle"
-        size={35}
+        size={50}
+        color={theme.background}
         onPress={() => {
           navigation.navigate("Account");
         }}

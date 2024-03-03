@@ -30,8 +30,8 @@ export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
       <CustomButton
         title="Events"
         onPress={() => navigation.navigate("EventList")}
-        buttonColor={theme.primary} // Use your theme's button color
-        textColor={theme.text} // Text color is now customizable
+        buttonColor={theme.text} // Use your theme's button color
+        textColor={theme.background} // Text color is now customizable
       />
     );
     if (user.isAdmin) {
@@ -39,8 +39,8 @@ export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
         <CustomButton
           title="Create Event"
           onPress={() => navigation.navigate("EventCreate")}
-          buttonColor={theme.emphasis} // Use your theme's button color
-          textColor={theme.text} // Text color is now customizable
+          buttonColor={theme.text} // Use your theme's button color
+          textColor={theme.background} // Text color is now customizable
         />
       );
     }
