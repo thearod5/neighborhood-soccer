@@ -11,19 +11,21 @@ export const EventRegistrationPage = () => {
   const theme = useAppTheme();
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.text, { color: theme.emphasis }]}>
-        {event.title}
-      </Text>
+      <View style={[styles.centerRow]}>
+        <Text style={[styles.title, { color: theme.text }]}>{event.title}</Text>
+      </View>
       <View style={[styles.centerRow]}>
         <Image source={{ uri: event.imageUri }} style={styles.image} />
       </View>
-      <CustomButton
-        customStyles={styles.button}
-        onPress={startPayment}
-        title={"Payment"}
-        buttonColor={theme.primary}
-        textColor={theme.text}
-      />
+      <View style={[styles.centerRow]}>
+        <CustomButton
+          customStyles={styles.button}
+          onPress={startPayment}
+          title={"Payment"}
+          buttonColor={theme.primary}
+          textColor={theme.text}
+        />
+      </View>
     </View>
   );
 };
@@ -31,24 +33,26 @@ export const EventRegistrationPage = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
+    justifyContent: "space-between",
     height: "100%",
   },
-  text: {
+  title: {
     fontSize: 24,
-    alignContent: "center",
+    margin: 10,
   },
   image: {
-    width: "50%",
-    height: "50%",
+    width: 250,
+    height: 250,
+    borderRadius: 25,
   },
-  title: {
+  text: {
     margin: 10,
-    borderRadius: 5,
     height: "10%",
   },
+  button: { width: "75%" },
+  //utilities
   centerRow: {
     flexDirection: "row",
-    alignContent: "center",
+    justifyContent: "center",
   },
-  button: {},
 });

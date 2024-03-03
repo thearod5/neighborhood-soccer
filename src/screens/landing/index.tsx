@@ -28,7 +28,7 @@ export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
   } else {
     body = (
       <CustomButton
-        title="Events"
+        title="Play"
         onPress={() => navigation.navigate("EventList")}
         buttonColor={theme.text} // Use your theme's button color
         textColor={theme.background} // Text color is now customizable
@@ -37,9 +37,9 @@ export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
     if (user.isAdmin) {
       adminButton = (
         <CustomButton
-          title="Create Event"
+          title="Admin Panel"
           onPress={() => navigation.navigate("EventCreate")}
-          buttonColor={theme.text} // Use your theme's button color
+          buttonColor={theme.primary} // Use your theme's button color
           textColor={theme.background} // Text color is now customizable
         />
       );
@@ -54,7 +54,7 @@ export const LandingScreen: React.FC<LandingPageProps> = ({ navigation }) => {
       <Text style={[styles.textStyle, { color: theme.text }]}>
         Neighborhood Soccer
       </Text>
-      <View style={styles.buttonContainer}>
+      <View style={(styles.buttonContainer, { width: theme.targetWidth })}>
         {body}
         {adminButton}
       </View>
@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
     marginBottom: 20, // Adds space below the text
   },
   buttonContainer: {
-    width: 200, // Sets a width for the button for better control
     marginTop: 20, // If needed, adjust for spacing above the button
   },
 });

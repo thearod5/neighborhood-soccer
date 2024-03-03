@@ -29,37 +29,44 @@ export const CreateEvent: React.FC = () => {
   }
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={styles.title}>Event</Text>
-      <View style={[styles.inputContainer]}>
-        <TextInput
-          placeholder="Name"
-          value={name}
-          onChangeText={setName}
-          style={styles.input}
-        />
+      <View style={[styles.centerRow]}>
+        <Text style={styles.title}>Event</Text>
+      </View>
+      <View style={[styles.centerRow]}>
+        <View style={[styles.inputContainer]}>
+          <TextInput
+            placeholder="Name"
+            value={name}
+            onChangeText={setName}
+            style={styles.input}
+          />
 
-        <TextInput
-          placeholder="Location"
-          value={location}
-          onChangeText={setLocation}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="Description"
-          value={description}
-          onChangeText={setDescription}
-          style={styles.input}
-          multiline={true} // Enable multiline input
-          numberOfLines={5} // Set the initial number of lines
+          <TextInput
+            placeholder="Location"
+            value={location}
+            onChangeText={setLocation}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Description"
+            value={description}
+            onChangeText={setDescription}
+            style={styles.input}
+            multiline={true} // Enable multiline input
+            numberOfLines={5} // Set the initial number of lines
+          />
+        </View>
+      </View>
+
+      <View style={[styles.centerRow]}>
+        <CustomButton
+          title="Create"
+          customStyles={styles.button}
+          onPress={handleEventCreate}
+          buttonColor={theme.primary}
+          textColor={theme.text}
         />
       </View>
-      <CustomButton
-        title="Create"
-        customStyles={styles.button}
-        onPress={handleEventCreate}
-        buttonColor={theme.primary}
-        textColor={theme.text}
-      />
     </View>
   );
 };
@@ -79,11 +86,12 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: "column",
-    width: "100%",
+    width: "75%",
     padding: 25,
   },
   button: {
     margin: 25,
+    width: "50%",
   },
   input: {
     borderWidth: 1,
@@ -93,5 +101,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: "100%",
     marginBottom: 10,
+  },
+  //utilities
+  centerRow: {
+    flexDirection: "row",
+    justifyContent: "center",
   },
 });

@@ -6,6 +6,8 @@ export interface AppTheme {
   primary: string;
   emphasis: string;
   link: string;
+  targetWidth: string;
+  largeWidth: string;
 }
 
 export const darkTheme: AppTheme = {
@@ -14,6 +16,8 @@ export const darkTheme: AppTheme = {
   primary: "#6ad5fc", //chicago blue
   emphasis: "#DE033F", //chicago red
   link: "#6ad5fc",
+  targetWidth: "75%",
+  largeWidth: "85%",
 };
 
 interface ThemeProviderProps {

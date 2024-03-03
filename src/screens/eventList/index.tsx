@@ -15,8 +15,8 @@ export const EventList: React.FC<EventListProps> = ({ navigation }) => {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Upcoming</Text>
-      <ScrollView style={[styles.scrollView]}>
+      <Text style={[styles.upcoming, { color: theme.text }]}>Upcoming</Text>
+      <ScrollView style={[styles.scrollView, { width: theme.largeWidth }]}>
         {eventState.events.map((event) => {
           return (
             <EventListItem
@@ -37,12 +37,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
   },
-  scrollView: {
-    width: "100%",
-    height: "100%",
-  },
-  title: {
+  upcoming: {
     fontSize: 24,
-    padding: 10,
+    padding: 15,
+  },
+  scrollView: {
+    height: "100%",
   },
 });

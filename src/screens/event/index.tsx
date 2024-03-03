@@ -34,7 +34,10 @@ export const EventPage: React.FC<IndexProps> = ({ navigation }) => {
         <Text style={[styles.title, { color: theme.text }]}>{event.title}</Text>
       </View>
       <View style={styles.centerRow}>
-        <Image source={{ uri: event.imageUri }} style={styles.image} />
+        <Image
+          source={{ uri: event.imageUri }}
+          style={[styles.image, { width: theme.targetWidth }]}
+        />
       </View>
 
       <View style={styles.centerRow}>
@@ -103,9 +106,7 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: "50%",
     height: 200,
-
     resizeMode: "cover",
     marginBottom: 20,
   },

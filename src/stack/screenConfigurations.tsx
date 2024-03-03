@@ -2,12 +2,12 @@
 import { AboutUsPage } from "screens/aboutus";
 import { AccountPage } from "screens/account";
 import { LoginScreen } from "screens/account/login";
-import { CreateEvent } from "screens/createEvent";
+import { CreateEvent } from "screens/eventCreation";
 import { EventPage } from "screens/event";
 import { EventList } from "screens/eventList";
 import { EventUsers } from "screens/eventUsers";
 import { LandingScreen } from "screens/landing";
-import { EventRegistrationPage } from "screens/registration/registration";
+import { EventRegistrationPage } from "screens/eventRegistration";
 
 export interface ScreenConfig {
   name: string;
