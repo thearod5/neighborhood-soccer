@@ -29,16 +29,13 @@
 8. User completes payment on stripe page.
 9. Registration confirmation is displayed.
 
-# TODO
 
-## App
+# TODO
 
 - [ ] Create registration page
 - [ ] Create stripe account
 - [ ] Create deployment account and payment setup
 - [ ] Setup BEND
-
-## Developer
 
 - [x] Convert to type script.
 - [x] Create store for holding user.
