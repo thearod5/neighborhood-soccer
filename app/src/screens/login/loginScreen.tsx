@@ -1,11 +1,17 @@
-// src/pages/LoginScreen.js
-import { CommonActions } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { api } from "api/baseApi";
 import CustomButton from "components/common/customButton";
+import { User, UserCreationPayload } from "domain/user";
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { AppStackParamList } from "stack/screenConfigurations";
-import { userState } from "state/userState";
 import { useAppTheme } from "theme/appThemeProvider";
 import { commonStyles } from "theme/commonStyles";
 
@@ -13,61 +19,73 @@ interface LoginScreenProps {
   navigation: StackNavigationProp<AppStackParamList, "Login">;
 }
 
+// Only include the minimal fields required for account creation
+const userFields: {
+  key: keyof UserCreationPayload;
+  displayName: string;
+}[] = [
+  { key: "username", displayName: "Username" },
+  { key: "password", displayName: "Password" },
+  { key: "email", displayName: "Email" },
+];
+
 export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const theme = useAppTheme();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState<UserCreationPayload>({
+    username: "",
+    password: "",
+    email: "",
+  });
 
-  const handleLogin = () => {
-    userState.login({ username, password: password });
-    navigation.dispatch(
-      CommonActions.reset({
-        index: 0, // Indicates the active route in the routes array
-        routes: [{ name: "Landing" }],
-      })
-    );
+  const handleChange = (field: keyof UserCreationPayload, value: string) => {
+    setUser((prev) => ({ ...prev, [field]: value }));
   };
 
-  if (userState.user !== null) {
-    navigation.navigate("Account");
-  }
+  const handleCreateUser = () => {
+    if (!user.username || !user.password || !user.email) {
+      Alert.alert("Error", "Username, password, and email are required.");
+      return;
+    }
+    // Simplify userInfo for initial account creation
+    const userInfo: User = { ...user, id: "", isAdmin: false };
+    api("createUser", userInfo)
+      .then((response) => {
+        Alert.alert("Success", "Account has been created.");
+        navigation.navigate("AccountEdit");
+      })
+      .catch((error) => {
+        console.error(error);
+        Alert.alert("Error", "An error occurred: " + error.message);
+      });
+  };
 
   return (
-    <View
-      style={[
+    <ScrollView
+      contentContainerStyle={[
+        styles.contentContainer,
         commonStyles.pageContainer,
         { backgroundColor: theme.background },
       ]}
     >
       <View style={[styles.innerContainer]}>
-        <Text style={styles.title}>Create Account or Login</Text>
-        <TextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="Username"
-          value={username}
-          onChangeText={setUsername}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          style={styles.input}
-          secureTextEntry={true}
-        />
+        <Text style={styles.title}>Create Account</Text>
+        {userFields.map(({ key, displayName }) => (
+          <TextInput
+            key={key}
+            placeholder={displayName}
+            value={user[key] || ""}
+            onChangeText={(value) => handleChange(key, value)}
+            style={styles.input}
+            secureTextEntry={key === "password"}
+          />
+        ))}
         <CustomButton
           buttonColor={theme.primary}
-          title="Login"
-          onPress={handleLogin}
+          title="Create Account"
+          onPress={handleCreateUser}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -77,7 +95,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 24,
     marginBottom: 20,
-    textAlign: "center", // Center the text horizontally
+    textAlign: "center",
   },
   input: {
     color: "white",
@@ -86,6 +104,11 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 10,
     marginBottom: 20,
-    textAlign: "center", // Center the text inside the TextInput horizontally
+    textAlign: "center",
+  },
+  contentContainer: {
+    flexGrow: 1, // Ensures that the container takes up the space of the ScrollView
+    //justifyContent: "center", // Centers content vertically in ScrollView
+    //alignItems: "center", // Centers content horizontally in ScrollView
   },
 });
