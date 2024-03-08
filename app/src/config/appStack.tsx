@@ -19,7 +19,7 @@ export const AppStack: React.FC = () => {
   if (isLoading) {
     return <LoadingPage />;
   }
-
+  console.log("Default Screen", DefaultScreen);
   return (
     <Stack.Navigator initialRouteName={DefaultScreen}>
       {Object.values(AppScreens).map((screen) => (

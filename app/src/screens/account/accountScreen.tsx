@@ -4,7 +4,7 @@ import CustomButton from "components/common/customButton";
 
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import { AppStackParamList } from "stack/screenConfigurations";
+import { AppStackParamList } from "src/config/screenConfigurations";
 import { userState } from "state/userState";
 import { useAppTheme } from "theme/appThemeProvider";
 import { commonStyles } from "theme/commonStyles";

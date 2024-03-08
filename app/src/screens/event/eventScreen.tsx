@@ -13,7 +13,7 @@ import {
 import { Icon } from "react-native-elements";
 import { Event } from "src/domain/event";
 
-import { AppStackParamList } from "stack/screenConfigurations";
+import { AppStackParamList } from "src/config/screenConfigurations";
 import { eventState } from "state/eventState";
 import { useAppTheme } from "theme/appThemeProvider";
 import { commonStyles } from "theme/commonStyles";

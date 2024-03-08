@@ -1,5 +1,6 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 import { api } from "api/baseApi";
+import { showError } from "components/common/errors";
 import { FormComponent } from "components/common/forms/form";
 import { FormFieldConfig } from "components/common/forms/types";
 import { User } from "domain/user";
@@ -12,14 +13,16 @@ interface LoginScreenProps {
   navigation: StackNavigationProp<AppStackParamList, "Login">;
 }
 
-const loginFields: FormFieldConfig[] = [
-  { key: "header", type: "header", displayName: "Login" },
-  { key: "username", displayName: "Username or Email", type: "text" },
+const createAccountFields: FormFieldConfig[] = [
+  { key: "header", displayName: "New Account", type: "header" },
+  { key: "username", displayName: "Username", type: "text" },
+  { key: "email", displayName: "Email", type: "text" },
   { key: "password", displayName: "Password", type: "password" },
-  // Future: { key: "profilePicture", displayName: "Profile Picture", type: "image" },
 ];
 
-export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
+export const AccountCreateScreen: React.FC<LoginScreenProps> = ({
+  navigation,
+}) => {
   const theme = useAppTheme();
 
   const handleCreateUser = (formData: Record<string, string>) => {
@@ -28,7 +31,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     const email = formData["email"];
 
     if (!username || !password || !email) {
-      Alert.alert("Error", "Username, password, and email are required.");
+      const error = "Username, password, and email are required.";
+      showError(error);
       return;
     }
 
@@ -52,8 +56,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
   return (
     <FormComponent
-      fields={loginFields}
-      submitText="Login"
+      fields={createAccountFields}
+      submitText="Create"
       onSubmit={handleCreateUser}
       theme={theme}
     />
