@@ -15,7 +15,6 @@ import { useAppTheme } from "theme/appThemeProvider"; // For styling purposes
 
 interface AccountEditScreenProps {}
 export const AccountEditScreen: React.FC<AccountEditScreenProps> = () => {
-  const { userId } = userState.user;
   const theme = useAppTheme();
 
   const [userInfo, setUserInfo] = useState({
@@ -31,7 +30,7 @@ export const AccountEditScreen: React.FC<AccountEditScreenProps> = () => {
 
   const handleSave = () => {
     // Update user information in your backend
-    api("updateUser", { userId, ...userInfo })
+    api("updateUser", { id, ...userInfo })
       .then(() => {
         Alert.alert("Success", "Profile updated successfully.");
         navigation.goBack(); // Or navigate to a different screen as needed

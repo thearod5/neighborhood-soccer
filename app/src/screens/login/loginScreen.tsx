@@ -1,18 +1,20 @@
+import { CommonActions } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { api } from "api/baseApi";
 import { FormComponent } from "components/common/forms/form";
-import { FormFieldConfig } from "components/common/forms/types";
-import { User } from "domain/user";
+import { FormField } from "components/common/forms/types";
+import { UserLogin } from "domain/user";
 import React from "react";
 import { Alert } from "react-native";
 import { AppStackParamList } from "src/config/screenConfigurations";
+import { userState } from "state/userState";
 import { useAppTheme } from "theme/appThemeProvider";
 
 interface LoginScreenProps {
   navigation: StackNavigationProp<AppStackParamList, "Login">;
 }
 
-const loginFields: FormFieldConfig[] = [
+const loginFields: FormField[] = [
   { key: "header", type: "header", displayName: "Login" },
   { key: "username", displayName: "Username or Email", type: "text" },
   { key: "password", displayName: "Password", type: "password" },
@@ -25,24 +27,27 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const handleCreateUser = (formData: Record<string, string>) => {
     const username = formData["username"];
     const password = formData["password"];
-    const email = formData["email"];
 
-    if (!username || !password || !email) {
+    if (!username || !password) {
+      console.log("Missing info");
       Alert.alert("Error", "Username, password, and email are required.");
       return;
     }
 
-    const userInfo: User = {
+    const userLogin: UserLogin = {
       username,
-      email,
       password,
-      id: "",
-      isAdmin: false,
     };
-    api("createUser", userInfo)
+    api("login", userLogin)
       .then((response) => {
         Alert.alert("Success", "Account has been created.");
-        navigation.navigate("AccountEdit");
+        userState.user = response;
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0, // Indicates the active route in the routes array
+            routes: [{ name: "EventList" }],
+          })
+        );
       })
       .catch((error) => {
         console.error(error);

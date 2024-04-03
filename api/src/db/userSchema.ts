@@ -11,7 +11,7 @@ export const UserSchema = DB.define(
     },
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      //allowNull: false,
     },
     lastName: {
       type: DataTypes.STRING,

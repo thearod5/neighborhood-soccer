@@ -1,8 +1,9 @@
+import { CommonActions } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { api } from "api/baseApi";
 import { showError } from "components/common/errors";
 import { FormComponent } from "components/common/forms/form";
-import { FormFieldConfig } from "components/common/forms/types";
+import { FormField } from "components/common/forms/types";
 import { User } from "domain/user";
 import React from "react";
 import { Alert } from "react-native";
@@ -13,7 +14,7 @@ interface LoginScreenProps {
   navigation: StackNavigationProp<AppStackParamList, "Login">;
 }
 
-const createAccountFields: FormFieldConfig[] = [
+const createAccountFields: FormField[] = [
   { key: "header", displayName: "New Account", type: "header" },
   { key: "username", displayName: "Username", type: "text" },
   { key: "email", displayName: "Email", type: "text" },
@@ -45,8 +46,13 @@ export const AccountCreateScreen: React.FC<LoginScreenProps> = ({
     };
     api("createUser", userInfo)
       .then((response) => {
-        Alert.alert("Success", "Account has been created.");
-        navigation.navigate("AccountEdit");
+        console.log("Res", response);
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0, // Indicates the active route in the routes array
+            routes: [{ name: "EventList" }],
+          })
+        );
       })
       .catch((error) => {
         console.error(error);

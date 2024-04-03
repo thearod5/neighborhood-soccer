@@ -26,6 +26,16 @@ export const AccountPage: React.FC<AccountPageProps> = ({ navigation }) => {
     return null;
   }
 
+  const onLogout = () => {
+    userState.logout;
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0, // Indicates the active route in the routes array
+        routes: [{ name: "Landing" }],
+      })
+    );
+  };
+
   return (
     <View style={commonStyles.pageContainer}>
       <View style={[commonStyles.centerRow]}>
@@ -51,7 +61,7 @@ export const AccountPage: React.FC<AccountPageProps> = ({ navigation }) => {
           title="Logout"
           buttonColor={theme.background}
           textColor={theme.emphasis}
-          onPress={userState.logout}
+          onPress={onLogout}
         />
       </View>
     </View>

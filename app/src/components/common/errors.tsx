@@ -1,12 +1,5 @@
-import SnackBar from "react-native-snackbar-component";
+import { Text } from "react-native";
 
 export const showError = (text: string) => {
-  <SnackBar
-    visible={true}
-    textMessage={text}
-    actionHandler={() => {
-      console.log("snackbar button clicked!");
-    }}
-    actionText="let's go"
-  />;
+  <Text>error</Text>;
 };
