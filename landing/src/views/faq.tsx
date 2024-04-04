@@ -5,10 +5,19 @@ const FAQ = () => {
 
   return (
     <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
+        <h1>Frequently Asked Questions</h1>
+      </div>
       {questions.map((q) => {
         return (
-          <div key={q["question"]} style={{ color: "white", padding: "10px" }}>
-            <h1>{q["question"]}</h1>
+          <div key={q["question"]} style={{ padding: "20px" }}>
+            <h2>{q["question"]}</h2>
             <div className="faq_answer">{q["answer"]}</div>
           </div>
         );

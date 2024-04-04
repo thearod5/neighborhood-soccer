@@ -12,6 +12,7 @@ const NavButton: React.FC<Props> = ({ link, text }) => {
       style={{
         display: "flex",
         alignItems: "center",
+        padding: "10px",
       }}
     >
       <NavLink
