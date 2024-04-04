@@ -1,9 +1,9 @@
 // src/routes.tsx
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import AboutUs from "./views/aboutus";
-import EventsPage from "./views/events";
-import FAQPage from "./views/faq";
+import AboutUs from "./views/AboutUs";
+import EventsPage from "./views/Events";
+import FAQPage from "./views/FAQ";
 
 const router = createBrowserRouter([
   {

@@ -1,53 +1,25 @@
-/* src/Navbar.css */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: #333;
-  color: #fff;
-}
-
+/* NavBar.module.css */
 .logo {
-  font-size: 1.5rem;
-}
-
-.menu-icon {
-  display: none;
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
-.menu-items {
-  display: flex;
-  list-style: none;
+.logo img {
+  height: 50px; /* Adjust based on your logo's size */
+  margin-right: 10px;
 }
 
-.menu-items li a {
-  color: #fff;
-  text-decoration: none;
-  padding: 0 1rem;
+nav {
+  background-color: #6ad5fc;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 /* Mobile view */
-@media screen and (max-width: 768px) {
-  .menu-icon {
-    display: block;
-  }
-
-  .menu-items {
+@media (max-width: 768px) {
+  .navLinks {
     display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    flex-direction: column;
-    background-color: #333;
-    width: 100%;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .menu-items.show-menu {
-    display: flex;
   }
 }
