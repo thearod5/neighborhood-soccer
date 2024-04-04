@@ -11,10 +11,10 @@
 }
 
 nav {
-  background-color: #6ad5fc;
+  color: "white";
   display: flex;
-  justify-content: space-between;
-  padding: 10px;
+  justify-content: space-evenly;
+  padding: 0px;
 }
 
 /* Mobile view */

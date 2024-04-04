@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import NavButton from "../components/NavButton";
 import logo from "../res/logo-transparent.png";
 import "../styles/NavBar.css";
+import { backgroundColor, textColor } from "../styles/constants";
 
 const NavBar = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -14,34 +17,25 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav>
+    <nav style={{ backgroundColor: backgroundColor }}>
       <div
         className="logo"
-        onClick={() => isMobile && setIsMenuOpen(!isMenuOpen)}
+        onClick={() => {
+          if (isMobile) {
+            setIsMenuOpen(!isMenuOpen);
+          } else {
+            navigate("/");
+          }
+        }}
       >
         <img src={logo} alt="Logo" />
-        <span>Chicago Neighborhood Soccer</span>
+        <span style={{ color: textColor }}>Chicago Neighborhood Soccer</span>
       </div>
       {!isMobile || isMenuOpen ? (
         <>
-          <NavLink
-            to="/about"
-            style={({ isActive }) => ({ color: isActive ? "red" : "blue" })}
-          >
-            About Us
-          </NavLink>
-          <NavLink
-            to="/events"
-            style={({ isActive }) => ({ color: isActive ? "red" : "blue" })}
-          >
-            Events
-          </NavLink>
-          <NavLink
-            to="/faq"
-            style={({ isActive }) => ({ color: isActive ? "red" : "blue" })}
-          >
-            FAQ
-          </NavLink>
+          <NavButton link="/about" text="About Us" />
+          <NavButton link="/events" text="Events" />
+          <NavButton link="/faq" text="Frequently Asked Questions" />
         </>
       ) : null}
     </nav>

@@ -21,6 +21,7 @@ const LandingSection: React.FC<Props> = ({
           display: "flex",
           flexDirection: imagePos === "right" ? "row-reverse" : "row",
           alignItems: "center",
+          border: "1px solid red",
         }}
       >
         <div style={{ flex: 2 }}>
@@ -28,13 +29,15 @@ const LandingSection: React.FC<Props> = ({
             src={imageUrl}
             alt="Dynamic"
             style={{
+              padding: 0,
+              margin: 0,
               width: "100%",
               height: "100%",
             }}
           />
         </div>
         <div style={{ flex: 3 }}>
-          <p>{text}</p>
+          <p style={{ padding: 10 }}>{text}</p>
         </div>
       </div>
     </div>
