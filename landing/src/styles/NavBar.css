@@ -1,4 +1,17 @@
 /* NavBar.module.css */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensures the navbar stays on top of other content */
+  border-bottom: "1px solid white";
+  color: "white";
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0px;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -8,13 +21,6 @@
 .logo img {
   height: 50px; /* Adjust based on your logo's size */
   margin-right: 10px;
-}
-
-nav {
-  color: "white";
-  display: flex;
-  justify-content: space-evenly;
-  padding: 0px;
 }
 
 /* Mobile view */

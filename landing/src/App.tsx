@@ -7,7 +7,10 @@ const App: React.FC = () => {
   return (
     <div style={{ backgroundColor: backgroundColor }}>
       <NavBar />
-      <div id="detail">
+      <div
+        id="detail"
+        style={{ paddingTop: "60px", minHeight: "100vh", height: "100%" }}
+      >
         <Outlet />
       </div>
     </div>

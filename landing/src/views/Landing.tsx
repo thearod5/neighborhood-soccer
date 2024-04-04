@@ -1,6 +1,5 @@
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import { NavLink } from "react-router-dom";
 import LandingSection from "../components/LandingSection";
 import "../styles/Landing.css";
 const DefaultImage = "https://picsum.photos/id/1018/1000/600/";
@@ -34,14 +33,8 @@ const Landing = () => {
         />
       </section>
       <LandingSection
-        title={
-          <NavLink
-            to="/about"
-            style={({ isActive }) => ({ color: isActive ? "red" : "black" })}
-          >
-            <h1>About Us</h1>
-          </NavLink>
-        }
+        title="About Us"
+        titleLink="/about"
         imageUrl={DefaultImage}
         text="For more than 10 years, this club has been organizing soccer meetups
         and tournaments in the West Loop and Chicago South Side. We, your
@@ -50,14 +43,8 @@ const Landing = () => {
         imagePos="right"
       />
       <LandingSection
-        title={
-          <NavLink
-            to="/events"
-            style={({ isActive }) => ({ color: isActive ? "red" : "black" })}
-          >
-            <h1>Events</h1>
-          </NavLink>
-        }
+        title="Events"
+        titleLink="/events"
         imageUrl={DefaultImage}
         text="Whether you're a seasoned player or just looking to kick the ball
         around with some new friends, we've got you covered. Dive into the

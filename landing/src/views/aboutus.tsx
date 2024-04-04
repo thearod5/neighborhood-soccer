@@ -1,6 +1,6 @@
 const AboutUs = () => {
   return (
-    <div style={{ padding: 10 }}>
+    <div style={{ padding: 10, color: "white" }}>
       <h1>About Us</h1>
       <p>
         For more than 10 years, this club has been organizing soccer meetups and

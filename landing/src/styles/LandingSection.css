@@ -1,0 +1,15 @@
+.navLink {
+  color: black; /* Default color */
+  text-decoration: none; /* Example to remove underline */
+}
+
+.activeNavLink {
+  color: blue; /* Color on hover */
+}
+
+/* Media query for screen sizes 768px and below */
+@media (max-width: 768px) {
+  .contentContainer {
+    flex-direction: column !important;
+  }
+}
