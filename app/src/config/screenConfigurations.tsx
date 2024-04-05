@@ -1,5 +1,7 @@
 // Define authenticated screens
+import { AccountEditScreen } from "screens/account/accountEdit";
 import { AccountPage } from "screens/account/accountScreen";
+import { AccountCreateScreen } from "screens/accountCreate/accountCreateScreen";
 import { EventScreen } from "screens/event/eventScreen";
 import { CreateEvent } from "screens/eventCreation/evenCreationScreen";
 import { EventListScreen } from "screens/eventList/eventListScreen";
@@ -23,7 +25,7 @@ export const AppScreens: Record<string, ScreenConfig> = {
   Login: {
     name: "Login",
     component: LoginScreen,
-    options: { title: "Account" },
+    options: { title: "Account Login" },
   },
   EventList: {
     name: "EventList",
@@ -34,6 +36,16 @@ export const AppScreens: Record<string, ScreenConfig> = {
     name: "Account",
     component: AccountPage,
     options: { title: "User Profile" },
+  },
+  AccountCreate: {
+    name: "AccountCreate",
+    component: AccountCreateScreen,
+    options: { title: "Create Account" },
+  },
+  AccountEdit: {
+    name: "AccountEdit",
+    component: AccountEditScreen,
+    options: { title: "Edit Account" },
   },
   Event: {
     name: "Event",
@@ -58,11 +70,13 @@ export const AppScreens: Record<string, ScreenConfig> = {
 };
 
 export type AppStackParamList = {
+  // todo: generalize to use key above.
   Landing: undefined;
   Login: undefined;
   About: undefined;
-  EventList: undefined;
   Account: undefined;
+  AccountEdit: undefined;
+  EventList: undefined;
   Event: { event: Event };
   EventUsers: undefined;
   EventRegistration: undefined;

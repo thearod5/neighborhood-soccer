@@ -40,3 +40,10 @@ export const darkTheme: AppTheme = {
   targetWidth: "75%",
   largeWidth: "85%",
 };
+
+export const theme = {
+  colors: {
+    primary: chicagoBlue,
+    secondary: chicagoRed
+  }
+};

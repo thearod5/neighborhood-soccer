@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "name": "5v5 Co-Ed Futsal Pick Up",
+      "link": "https://www.meetup.com/nbhdsoccer/events/286980153/",
+      "location": "McKinley Park  -  Thu 8th, 7:00pm - 09:30pm",
+      "description": "We are happy to be hosting FREE pickup soccer at the Chicago Street Soccer cage fields at McKinley Park! We will be playing on the FUTSAL cage that Chicago Street Soccer has built for the community!"
+    },
+    {
+      "name": "7v7 Co-Ed Outdoors Pick Up Soccer",
+      "link": "https://www.meetup.com/nbhdsoccer/events/ksksvsydckblb/",
+      "location": "Harrison Park (Pilsen)  -  Fri 9th, 8:00pm - 09:30pm",
+      "description": "$5 a person will help compensate for maintenance fees and will help us grow: such as buy bigger goals, host more events, and film our meetups as a service!"
+    },
+    {
+      "name": "7v7 Co-Ed Pick up Tournament",
+      "link": "https://www.meetup.com/nbhdsoccer/events/swnbwsydckbmb/",
+      "location": "Humboldt Park  -  Sat 10th, 09:15am - 10:45am",
+      "description": "We are excited to be hosting our weekly pickup tournament at Humboldt Park this weekend! We will be running small-sided games, 7v7 or 8v8 depending on numbers."
+    }
+  ]
+}

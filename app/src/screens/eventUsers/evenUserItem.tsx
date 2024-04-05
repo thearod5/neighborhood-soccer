@@ -2,7 +2,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { User } from "domain/user";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { AppStackParamList } from "stack/screenConfigurations";
+import { AppStackParamList } from "src/config/screenConfigurations";
 import { useAppTheme } from "theme/appThemeProvider";
 import { AppTheme } from "theme/types";
 

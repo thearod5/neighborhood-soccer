@@ -1,0 +1,28 @@
+{
+  "questions": [
+    {
+      "question": "Do we play every Friday and Saturday?",
+      "answer": "We play every Friday and Saturday if weather permits."
+    },
+    {
+      "question": "Do we play in winter?",
+      "answer": "We host outdoor soccer events in the winter! We are also growing and are actively looking for indoor venues."
+    },
+    {
+      "question": "Do I need to bring cleats?",
+      "answer": "We primarily play on turf where cleats are welcomed. We sometimes play on grass and occasionally play on hard courts, so please be sure to read the description of each event"
+    },
+    {
+      "question": "Do you host events?",
+      "answer": "We are organize soccer events and rent out our services! Contact us to organize and host you company hand non profit events."
+    },
+    {
+      "question": "Where can I mainly find you?",
+      "answer": "We have a special focus in west and south side neighborhoods, where we live. However we also host them in Northside. We are interested in hosting in every neighborhood in Chicago, let us know if you think you have a venue in your neighborhood where we could run pick ups!"
+    },
+    {
+      "question": "Are the events free?",
+      "answer": "Some. Please check the event description on Meetup."
+    }
+  ]
+}

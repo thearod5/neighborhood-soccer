@@ -1,9 +1,8 @@
-import { User, UserInput } from "domain/user";
+import { UserInfo } from "domain/user";
 import { makeAutoObservable, observable } from "mobx";
-import { adminUser } from "testData/testUsers";
 
 class UserState {
-  user: User | null = adminUser;
+  user: UserInfo | null = null;
 
   constructor() {
     makeAutoObservable(this, {
@@ -11,8 +10,8 @@ class UserState {
     });
   }
 
-  login(userInput: UserInput) {
-    this.user = adminUser;
+  login(userInfo: UserInfo) {
+    this.user = userInfo;
     console.log("User logged in.");
   }
 

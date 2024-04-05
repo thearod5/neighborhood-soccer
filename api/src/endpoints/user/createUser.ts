@@ -1,7 +1,12 @@
-import { Request, Response } from "express";
-import { UserSchema } from "../../db/userSchema";
+import { User, UserInfo } from "domain/user";
 
-export const createUserEndpoint = async (req: Request, res: Response) => {
-  const newUser = await UserSchema.create(req.body);
-  res.status(201).json(newUser);
-};
+export function createUserEndpoint(user: User): Promise<UserInfo> {
+  const userInfoInstance = {
+    id: 1,
+    username: "thearod5",
+    isAdmin: true,
+  };
+  return new Promise((res) => {
+    return userInfoInstance;
+  });
+}

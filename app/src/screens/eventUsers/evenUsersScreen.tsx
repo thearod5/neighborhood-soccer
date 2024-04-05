@@ -1,7 +1,7 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ItemList } from "components/common/itemList";
 import React from "react";
-import { AppStackParamList } from "stack/screenConfigurations";
+import { AppStackParamList } from "src/config/screenConfigurations";
 import { eventState } from "state/eventState";
 import { EventUserItem } from "./evenUserItem";
 

@@ -3,15 +3,17 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": ".",
+    "include": ["src"],
     "paths": {
+      "api/*": ["src/api/*"],
       "assets/*": ["src/assets/*"],
       "components/*": ["src/components/*"],
       "state/*": ["src/state/*"],
       "screens/*": ["src/screens/*"],
-      "stack/*": ["src/stack/*"],
+      "stack/*": ["src/config/*"],
       "testData/*": ["src/testData/*"],
       "theme/*": ["src/theme/*"],
-      "domain/*": ["src/domain/*"]
+      "domain/*": ["../domain/*"]
     }
   }
 }

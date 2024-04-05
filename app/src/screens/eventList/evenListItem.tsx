@@ -2,8 +2,8 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { AppStackParamList } from "src/config/screenConfigurations";
 import { Event } from "src/domain/event";
-import { AppStackParamList } from "stack/screenConfigurations";
 import { useAppTheme } from "theme/appThemeProvider";
 
 interface EventListItemProps {

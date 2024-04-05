@@ -4,7 +4,7 @@ import CustomButton from "components/common/customButton";
 
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import { AppStackParamList } from "stack/screenConfigurations";
+import { AppStackParamList } from "src/config/screenConfigurations";
 import { userState } from "state/userState";
 import { useAppTheme } from "theme/appThemeProvider";
 import { commonStyles } from "theme/commonStyles";
@@ -25,6 +25,16 @@ export const AccountPage: React.FC<AccountPageProps> = ({ navigation }) => {
     );
     return null;
   }
+
+  const onLogout = () => {
+    userState.logout;
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0, // Indicates the active route in the routes array
+        routes: [{ name: "Landing" }],
+      })
+    );
+  };
 
   return (
     <View style={commonStyles.pageContainer}>
@@ -51,7 +61,7 @@ export const AccountPage: React.FC<AccountPageProps> = ({ navigation }) => {
           title="Logout"
           buttonColor={theme.background}
           textColor={theme.emphasis}
-          onPress={userState.logout}
+          onPress={onLogout}
         />
       </View>
     </View>

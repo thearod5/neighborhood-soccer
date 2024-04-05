@@ -21,6 +21,7 @@ export const commonStyles = StyleSheet.create({
     justifyContent: "space-between",
     height: "100%",
     backgroundColor: backgroundColor,
+    border: "1px solid green",
   },
   columnContainer: {
     flexDirection: "column",
@@ -31,5 +32,11 @@ export const commonStyles = StyleSheet.create({
   },
   fullWidth: {
     width: "100%",
+  },
+  marginAuto: {
+    margin: "auto"
+  },
+  debug: {
+    border: "1px solid red",
   },
 });
