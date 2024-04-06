@@ -2,7 +2,7 @@
 build:
   # Specify the Dockerfile path
   docker:
-    web: Dockerfile
+    web: landing/Dockerfile
   # Optionally, you can specify build args if your Dockerfile needs them
   # args:
   #   NODE_ENV: production
