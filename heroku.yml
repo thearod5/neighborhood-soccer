@@ -1,12 +1,4 @@
 # Define the Docker setup
 build:
-  # Specify the Dockerfile path
   docker:
     web: landing/Dockerfile
-  # Optionally, you can specify build args if your Dockerfile needs them
-  # args:
-  #   NODE_ENV: production
-
-# Define how to run your app. The 'web' process type is important for HTTP traffic.
-run:
-  web: serve -s build
