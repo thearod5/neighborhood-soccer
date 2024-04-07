@@ -10,11 +10,24 @@ const App: React.FC = () => {
     <div style={{ backgroundColor: backgroundColor, color: "white" }}>
       <NavBar />
       <div
-        id="detail"
-        style={{ paddingTop: "60px", minHeight: "100vh", height: "100%" }}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
       >
-        <Outlet />
-        <Footer />
+        <div
+          id="detail"
+          style={{
+            paddingTop: "60px",
+            minHeight: "100vh",
+            height: "100%",
+            width: "85%",
+          }}
+        >
+          <Outlet />
+          <Footer />
+        </div>
       </div>
     </div>
   );

@@ -21,17 +21,6 @@ const images = [
 const Landing = () => {
   return (
     <div className="landingContainer">
-      <section>
-        <ImageGallery
-          items={images}
-          autoPlay={true}
-          showNav={false}
-          showThumbnails={false}
-          showPlayButton={false}
-          showFullscreenButton={false}
-          slideInterval={2000}
-        />
-      </section>
       <LandingSection
         title="About Us"
         titleLink="/about"
@@ -55,6 +44,27 @@ const Landing = () => {
         and making unforgettable moments along the way."
         imagePos="left"
       />
+      <section>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <h1>Our Family</h1>
+        </div>
+        <ImageGallery
+          additionalClass="custom-gallery"
+          items={images}
+          autoPlay={true}
+          showNav={false}
+          showThumbnails={false}
+          showPlayButton={false}
+          showFullscreenButton={false}
+          slideInterval={2000}
+        />
+      </section>
     </div>
   );
 };

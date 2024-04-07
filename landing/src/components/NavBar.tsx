@@ -58,11 +58,18 @@ const NavBar = () => {
             return (
               <div
                 key={link["link"]}
+                className="nav-link"
                 onClick={() => {
                   setIsMenuOpen(false);
                   navigate(link["link"]);
                 }}
-                style={{ fontSize: 18, padding: "10px" }}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  fontSize: 18,
+                  padding: "10px",
+                }}
               >
                 {link["title"]}
               </div>

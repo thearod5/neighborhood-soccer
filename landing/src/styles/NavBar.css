@@ -22,6 +22,14 @@ nav {
   height: 75px; /* Adjust based on your logo's size */
   margin-right: 10px;
 }
+.nav-link {
+  cursor: pointer; /* Changes cursor to indicate clickable items */
+  color: inherit; /* Inherits color from parent, but you can set a specific color */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+.nav-link:hover {
+  color: #0099ff;
+}
 
 /* Mobile view */
 @media (max-width: 768px) {

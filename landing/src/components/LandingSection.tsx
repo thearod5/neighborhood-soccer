@@ -57,7 +57,7 @@ const LandingSection: React.FC<Props> = ({
           />
         </div>
         <div style={{ flex: 3 }}>
-          <p style={{ padding: 10, color: textColor }}>{text}</p>
+          <p style={{ padding: 20, color: textColor }}>{text}</p>
         </div>
       </div>
     </div>

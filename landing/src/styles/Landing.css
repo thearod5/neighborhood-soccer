@@ -1,4 +1,7 @@
-.landingContainer {
-  min-height: 100vh;
-  height: "100%";
+.image-gallery-image {
+  height: 100%;
+  width: 100% !important; /* Overrides any existing width */
+  margin: 0 auto; /* Centers the gallery if needed */
+  padding: 0; /* Removes any padding */
+  border: "1px solid red" !important;
 }
