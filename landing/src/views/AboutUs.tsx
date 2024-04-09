@@ -1,11 +1,10 @@
 import AboutData from "../content/about.json";
 
 const AboutUs = () => {
-  console.log(AboutData);
   const paragraphs = AboutData["paragraphs"];
 
   return (
-    <div style={{ padding: 20, color: "white" }}>
+    <div style={{ padding: 20 }}>
       <div
         style={{
           display: "flex",

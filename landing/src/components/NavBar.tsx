@@ -1,9 +1,10 @@
+import { useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../res/logo-transparent.png";
 import "../styles/NavBar.css";
-import { backgroundColor, textColor } from "../styles/constants";
 const links = [
+  { link: "/", title: "Home" },
   {
     link: "/about",
     title: "About Us",
@@ -21,6 +22,7 @@ const NavBar = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const theme = useTheme();
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -28,8 +30,9 @@ const NavBar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  console.log("NavBarTheme:", theme.palette.background.default);
   return (
-    <nav style={{ backgroundColor: backgroundColor }}>
+    <nav style={{ backgroundColor: theme.palette.background.default }}>
       <div
         className="logo"
         onClick={() => {
@@ -42,7 +45,7 @@ const NavBar = () => {
         }}
       >
         <img src={logo} alt="Logo" />
-        <span style={{ color: textColor, fontSize: isMenuOpen ? 0 : 24 }}>
+        <span style={{ fontSize: isMenuOpen ? 0 : 24 }}>
           Chicago Neighborhood Soccer
         </span>
       </div>

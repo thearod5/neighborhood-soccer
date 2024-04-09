@@ -1,3 +1,4 @@
+import { useTheme } from "@mui/material";
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/LandingSection.css";
@@ -17,7 +18,7 @@ const LandingSection: React.FC<Props> = ({
   text,
   imagePos,
 }) => {
-  const textColor = "white";
+  const theme = useTheme();
   const navigate = useNavigate();
   return (
     <div
@@ -26,10 +27,10 @@ const LandingSection: React.FC<Props> = ({
         display: "flex",
         flexDirection: imagePos === "right" ? "row-reverse" : "row",
         alignItems: "center",
-        padding: 20,
+        margin: 20,
       }}
     >
-      <div style={{ flex: 2 }}>
+      <div style={{ flex: 2, height: "100%", padding: 10 }}>
         <img
           src={imageUrl}
           alt="Dynamic"
@@ -46,19 +47,16 @@ const LandingSection: React.FC<Props> = ({
       <div
         style={{
           flex: 3,
-          padding: 20,
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
+          padding: 10,
         }}
       >
-        <NavLink
-          to={titleLink}
-          className={({ isActive }) => (isActive ? "activeNavLink" : "navLink")}
-        >
-          <h1 style={{ color: textColor }}>{title}</h1>
+        <NavLink to={titleLink} style={{ color: theme.palette.text.primary }}>
+          <h1>{title}</h1>
         </NavLink>
-        <p style={{ color: textColor }}>{text}</p>
+        <p>{text}</p>
       </div>
     </div>
   );

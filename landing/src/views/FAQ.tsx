@@ -1,15 +1,7 @@
+import { useTheme } from "@mui/material";
 import Faq from "react-faq-component";
 import FAQData from "../content/faq.json";
-import { backgroundColor, chicagoBlue, chicagoRed } from "../styles/constants";
-
-const styles = {
-  bgColor: backgroundColor,
-  titleTextColor: "white",
-  rowTitleColor: "white",
-  rowContentColor: chicagoBlue,
-  // rowContentColor: 'grey',
-  arrowColor: chicagoRed,
-};
+import { chicagoRed } from "../styles/constants";
 
 interface FAQItem {
   question: string;
@@ -24,13 +16,23 @@ const config = {
 const FAQ = () => {
   const items: FAQItem[] = FAQData["questions"];
   const data = {
-    title: "",
+    title: "", //
     rows: items.map((q) => {
       return {
         title: q["question"],
         content: q["answer"],
       };
     }),
+  };
+  const theme = useTheme();
+
+  console.log("hi", theme.palette.background.default);
+  const styles = {
+    bgColor: theme.palette.background.default,
+    titleTextColor: theme.palette.text.primary,
+    rowTitleColor: theme.palette.text.primary,
+    rowContentColor: theme.palette.text.secondary,
+    arrowColor: chicagoRed,
   };
 
   console.log("data", data);

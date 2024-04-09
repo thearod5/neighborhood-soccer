@@ -5,7 +5,7 @@ import "../styles/Events.css";
 const EventsPage = () => {
   const events = EventData["events"];
   return (
-    <div style={{ color: "white", display: "flex", flexDirection: "column" }}>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <div
         style={{
           display: "flex",

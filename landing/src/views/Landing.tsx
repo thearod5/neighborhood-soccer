@@ -29,9 +29,7 @@ const Landing = () => {
             justifyContent: "center",
           }}
         >
-          <h1 style={{ color: "white" }}>
-            Hosting pick-up soccer in Chicago for over 10 years.
-          </h1>
+          <h1>Hosting pick-up soccer in Chicago for over 10 years.</h1>
         </div>
       </div>
       <LandingSection
