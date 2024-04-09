@@ -19,6 +19,7 @@ export const darkMode = createTheme({
     mode: "dark",
     background: {
       default: backgroundColor,
+      paper: "#4D4D4D",
     },
     text: {
       primary: "white",
