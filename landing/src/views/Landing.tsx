@@ -2,7 +2,6 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import LandingSection from "../components/LandingSection";
 import "../styles/Landing.css";
-import { chicagoRed } from "../styles/constants";
 const DefaultImage = "https://picsum.photos/id/1018/1000/600/";
 const images = [
   {
@@ -30,7 +29,7 @@ const Landing = () => {
             justifyContent: "center",
           }}
         >
-          <h1 style={{ color: chicagoRed }}>
+          <h1 style={{ color: "white" }}>
             Hosting pick-up soccer in Chicago for over 10 years.
           </h1>
         </div>

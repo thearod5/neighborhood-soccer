@@ -1,6 +1,6 @@
+import EventCard from "../components/EventCard";
 import EventData from "../content/events.json";
 import "../styles/Events.css";
-import { chicagoRed } from "../styles/constants";
 
 const EventsPage = () => {
   const events = EventData["events"];
@@ -15,23 +15,15 @@ const EventsPage = () => {
       >
         <h1>Events</h1>
       </div>
-      {events.map((e, i) => (
-        <div
-          key={e["name"]}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "20px",
-          }}
-        >
-          <a href={e["link"]} style={{ color: "white" }}>
-            <h2>{e["name"]}</h2>
-          </a>
-
-          <div style={{ color: chicagoRed }}>{e["location"]}</div>
-          <div>{e["description"]}</div>
-        </div>
-      ))}
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        {events.map((e, i) => (
+          <EventCard
+            name={e["name"]}
+            location={e["location"]}
+            description={e["description"]}
+          />
+        ))}
+      </div>
     </div>
   );
 };

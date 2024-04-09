@@ -24,7 +24,7 @@ const config = {
 const FAQ = () => {
   const items: FAQItem[] = FAQData["questions"];
   const data = {
-    title: "Frequently Asked Questions",
+    title: "",
     rows: items.map((q) => {
       return {
         title: q["question"],
@@ -37,9 +37,6 @@ const FAQ = () => {
 
   return (
     <div>
-      <div>
-        <Faq data={data} styles={styles} config={config} />
-      </div>
       <div
         style={{
           display: "flex",
@@ -48,6 +45,9 @@ const FAQ = () => {
         }}
       >
         <h1>Frequently Asked Questions</h1>
+      </div>
+      <div>
+        <Faq data={data} styles={styles} config={config} />
       </div>
     </div>
   );
