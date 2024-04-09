@@ -19,7 +19,7 @@ const App: React.FC = () => {
         <div
           id="detail"
           style={{
-            paddingTop: "60px",
+            paddingTop: "80px",
             minHeight: "100vh",
             height: "100%",
             width: "85%",

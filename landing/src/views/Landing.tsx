@@ -2,6 +2,7 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import LandingSection from "../components/LandingSection";
 import "../styles/Landing.css";
+import { chicagoRed } from "../styles/constants";
 const DefaultImage = "https://picsum.photos/id/1018/1000/600/";
 const images = [
   {
@@ -21,8 +22,21 @@ const images = [
 const Landing = () => {
   return (
     <div className="landingContainer">
+      <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <h1 style={{ color: chicagoRed }}>
+            Hosting pick-up soccer in Chicago for over 10 years.
+          </h1>
+        </div>
+      </div>
       <LandingSection
-        title="About Us"
+        title="Our Story"
         titleLink="/about"
         imageUrl={DefaultImage}
         text="For more than 10 years, this club has been organizing soccer meetups
