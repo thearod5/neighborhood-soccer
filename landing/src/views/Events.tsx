@@ -26,6 +26,7 @@ const EventsPage = () => {
         {events.map((e, i) => (
           <EventCard
             name={e["name"]}
+            link={e["link"]}
             location={e["location"]}
             description={e["description"]}
           />

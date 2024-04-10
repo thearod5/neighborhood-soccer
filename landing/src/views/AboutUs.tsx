@@ -14,13 +14,23 @@ const AboutUs = () => {
       >
         <h1>About Us</h1>
       </div>
-      {paragraphs.map((p, i) => {
-        return (
-          <p key={i} style={{ fontSize: 18 }}>
-            {p}
-          </p>
-        );
-      })}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ width: "60%" }}>
+          {paragraphs.map((p, i) => {
+            return (
+              <p key={i} style={{ fontSize: 18 }}>
+                {p}
+              </p>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

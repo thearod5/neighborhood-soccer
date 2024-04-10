@@ -5,12 +5,14 @@ import React, { useState } from "react";
 
 interface EventCardProps {
   name: string;
+  link: string;
   location: string;
   description: string;
 }
 
 const EventCard: React.FC<EventCardProps> = ({
   name,
+  link,
   location,
   description,
 }) => {
@@ -22,7 +24,9 @@ const EventCard: React.FC<EventCardProps> = ({
     >
       <CardContent>
         <Typography variant="h5" component="div" color="text.primary">
-          {name}
+          <a href={link} target="_blank" rel="noreferrer">
+            {name}
+          </a>
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {location}

@@ -7,7 +7,7 @@ import "./styles/App.css";
 import { darkMode, lightMode } from "./styles/theme";
 
 const App: React.FC = () => {
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState("light");
   const theme = mode === "light" ? lightMode : darkMode;
   return (
     <ThemeProvider theme={theme}>
