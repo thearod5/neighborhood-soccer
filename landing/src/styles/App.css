@@ -5,6 +5,9 @@ p {
 body {
   font-family: "roboto";
 }
+a {
+  color: inherit;
+}
 
 .roboto-thin {
   font-family: "Roboto", sans-serif;

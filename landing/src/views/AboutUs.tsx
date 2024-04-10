@@ -1,7 +1,10 @@
+import { useState } from "react";
 import AboutData from "../content/about.json";
 
 const AboutUs = () => {
   const paragraphs = AboutData["paragraphs"];
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const pageWidth = isMobile ? "100%" : "60%";
 
   return (
     <div style={{ padding: 20 }}>
@@ -21,7 +24,7 @@ const AboutUs = () => {
           justifyContent: "center",
         }}
       >
-        <div style={{ width: "60%" }}>
+        <div style={{ width: pageWidth }}>
           {paragraphs.map((p, i) => {
             return (
               <p key={i} style={{ fontSize: 18 }}>

@@ -23,12 +23,18 @@ const EventCard: React.FC<EventCardProps> = ({
       style={{ margin: 20, borderRadius: 20 }}
     >
       <CardContent>
-        <Typography variant="h5" component="div" color="text.primary">
-          <a href={link} target="_blank" rel="noreferrer">
+        <a
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          <Typography variant="h5" color="text.primary">
             {name}
-          </a>
-        </Typography>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          </Typography>
+        </a>
+
+        <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
           {location}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.primary">

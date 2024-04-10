@@ -1,4 +1,5 @@
 import { useTheme } from "@mui/material";
+import { useState } from "react";
 import Faq from "react-faq-component";
 import FAQData from "../content/faq.json";
 import { chicagoRed } from "../styles/constants";
@@ -25,8 +26,9 @@ const FAQ = () => {
     }),
   };
   const theme = useTheme();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const faqWidth = isMobile ? "90%" : "75%";
 
-  console.log("hi", theme.palette.background.default);
   const styles = {
     bgColor: theme.palette.background.default,
     titleTextColor: theme.palette.text.primary,
@@ -34,8 +36,6 @@ const FAQ = () => {
     rowContentColor: theme.palette.text.secondary,
     arrowColor: chicagoRed,
   };
-
-  console.log("data", data);
 
   return (
     <div>
@@ -46,10 +46,18 @@ const FAQ = () => {
           justifyContent: "center",
         }}
       >
-        <h1>Frequently Asked Questions</h1>
+        <h1 style={{ textAlign: "center" }}>Frequently Asked Questions</h1>
       </div>
-      <div>
-        <Faq data={data} styles={styles} config={config} />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ width: faqWidth }}>
+          <Faq data={data} styles={styles} config={config} />
+        </div>
       </div>
     </div>
   );

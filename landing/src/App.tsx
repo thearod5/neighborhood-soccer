@@ -27,7 +27,7 @@ const App: React.FC = () => {
               paddingTop: "80px",
               minHeight: "100vh",
               height: "100%",
-              width: "85%",
+              width: "100%",
             }}
           >
             <Outlet />

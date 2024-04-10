@@ -1,7 +1,8 @@
-import { useTheme } from "@mui/material";
-import React from "react";
+import { Typography, useTheme } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/LandingSection.css";
+import { chicagoBlue, chicagoRed } from "../styles/constants";
 
 interface Props {
   title: string;
@@ -20,6 +21,13 @@ const LandingSection: React.FC<Props> = ({
 }) => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const textAlign = isMobile ? "center" : "left";
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <div
       className="contentContainer"
@@ -27,10 +35,12 @@ const LandingSection: React.FC<Props> = ({
         display: "flex",
         flexDirection: imagePos === "right" ? "row-reverse" : "row",
         alignItems: "center",
-        margin: 20,
+        borderColor: imagePos === "right" ? chicagoRed : chicagoBlue,
+        borderBottom: "1px solid grey",
+        padding: 30,
       }}
     >
-      <div style={{ flex: 2, height: "100%", padding: 10 }}>
+      <div style={{ flex: 1, height: "100%", padding: 10 }}>
         <img
           src={imageUrl}
           alt="Dynamic"
@@ -46,17 +56,22 @@ const LandingSection: React.FC<Props> = ({
       </div>
       <div
         style={{
-          flex: 3,
+          flex: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
+          height: "100%",
           padding: 10,
         }}
       >
-        <NavLink to={titleLink} style={{ color: theme.palette.text.primary }}>
-          <h1>{title}</h1>
+        <NavLink to={titleLink} style={{ textDecoration: "none" }}>
+          <Typography variant="h1" textAlign="center" padding={3}>
+            {title}
+          </Typography>
         </NavLink>
-        <p>{text}</p>
+        <Typography variant="body1" textAlign={textAlign}>
+          {text}
+        </Typography>
       </div>
     </div>
   );

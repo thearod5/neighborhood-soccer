@@ -1,8 +1,9 @@
-import { useTheme } from "@mui/material";
+import { AppBar, Toolbar, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../res/logo-transparent.png";
+import logo from "../res/logo-light.png";
 import "../styles/NavBar.css";
+
 const links = [
   { link: "/", title: "Home" },
   {
@@ -30,57 +31,56 @@ const NavBar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log("NavBarTheme:", theme.palette.background.default);
   return (
-    <nav style={{ backgroundColor: theme.palette.background.default }}>
-      <div
-        className="logo"
-        onClick={() => {
-          if (isMobile) {
-            setIsMenuOpen(!isMenuOpen);
-          } else {
-            navigate("/");
-            setIsMenuOpen(false);
-          }
-        }}
-      >
-        <img src={logo} alt="Logo" />
-        <span style={{ fontSize: isMenuOpen ? 0 : 24 }}>
-          Chicago Neighborhood Soccer
-        </span>
-      </div>
-      {!isMobile || isMenuOpen ? (
+    <AppBar position="fixed">
+      <Toolbar style={{ display: "flex", justifyContent: "space-around" }}>
         <div
-          style={{
-            display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            top: 60,
+          className="logo"
+          onClick={() => {
+            if (isMobile) {
+              setIsMenuOpen(!isMenuOpen);
+            } else {
+              navigate("/");
+              setIsMenuOpen(false);
+            }
           }}
         >
-          {links.map((link) => {
-            return (
-              <div
-                key={link["link"]}
-                className="nav-link"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  navigate(link["link"]);
-                }}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  fontSize: 18,
-                  padding: "10px",
-                }}
-              >
-                {link["title"]}
-              </div>
-            );
-          })}
+          <img src={logo} alt="Logo" />
+          <Typography variant="h4">Chicago Neighborhood Soccer</Typography>
         </div>
-      ) : null}
-    </nav>
+        {!isMobile || isMenuOpen ? (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              top: 60,
+            }}
+          >
+            {links.map((link) => {
+              return (
+                <div
+                  key={link["link"]}
+                  className="nav-link"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate(link["link"]);
+                  }}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    fontSize: 18,
+                    padding: "10px",
+                  }}
+                >
+                  {link["title"]}
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
+      </Toolbar>
+    </AppBar>
   );
 };
 

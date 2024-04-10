@@ -1,7 +1,7 @@
+import { Typography } from "@mui/material";
 import { useState } from "react";
 import EventCard from "../components/EventCard";
 import EventData from "../content/events.json";
-import "../styles/Events.css";
 
 const EventsPage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -15,7 +15,9 @@ const EventsPage = () => {
           justifyContent: "center",
         }}
       >
-        <h1>Events</h1>
+        <Typography variant="h1" padding={3}>
+          Events
+        </Typography>
       </div>
       <div
         style={{
