@@ -1,12 +1,16 @@
+import { Typography } from "@mui/material";
+import { useState } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import LandingSection from "../components/LandingSection";
 import "../styles/Landing.css";
-const DefaultImage = "https://picsum.photos/id/1018/1000/600/";
+const FamilyImage = "https://pbs.twimg.com/media/Dm_POWdXcAEEO8C.jpg";
+const DefaultImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSduh_JOy3ttfTMMrciqOfpgqKYzh8SS2DN4xNf6X2Xg&s";
 const images = [
   {
-    original: "https://picsum.photos/id/1018/1000/600/",
-    thumbnail: "https://picsum.photos/id/1018/250/150/",
+    original: "https://pbs.twimg.com/media/Dm_POWdXcAEEO8C.jpg",
+    thumbnail: "https://pbs.twimg.com/media/Dm_POWdXcAEEO8C.jpg",
   },
   {
     original: "https://picsum.photos/id/1015/1000/600/",
@@ -19,12 +23,32 @@ const images = [
 ];
 
 const Landing = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   return (
-    <div className="landingContainer">
+    <div style={{ width: "100%", height: "100%" }}>
+      <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            borderBottom: "1px solid grey",
+          }}
+        >
+          <Typography
+            variant="h2"
+            textAlign="center"
+            padding={6}
+            component="div"
+          >
+            Hosting pick-up soccer in Chicago for over 10 years.
+          </Typography>
+        </div>
+      </div>
       <LandingSection
-        title="About Us"
+        title="Our Story"
         titleLink="/about"
-        imageUrl={DefaultImage}
+        imageUrl={FamilyImage}
         text="For more than 10 years, this club has been organizing soccer meetups
         and tournaments in the West Loop and Chicago South Side. We, your
         hosts Andre, Diego, Jordan and Julian are happy that you found us, and
@@ -52,7 +76,9 @@ const Landing = () => {
             justifyContent: "center",
           }}
         >
-          <h1>Our Family</h1>
+          <Typography variant="h1" padding={3}>
+            Our Family
+          </Typography>
         </div>
         <ImageGallery
           additionalClass="custom-gallery"

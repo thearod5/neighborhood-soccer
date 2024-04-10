@@ -1,6 +1,8 @@
-import React from "react";
+import { Typography, useTheme } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/LandingSection.css";
+import { chicagoBlue, chicagoRed } from "../styles/constants";
 
 interface Props {
   title: string;
@@ -17,48 +19,59 @@ const LandingSection: React.FC<Props> = ({
   text,
   imagePos,
 }) => {
-  const textColor = "white";
+  const theme = useTheme();
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const textAlign = isMobile ? "center" : "left";
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
-    <div>
-      <NavLink
-        to={titleLink}
-        className={({ isActive }) => (isActive ? "activeNavLink" : "navLink")}
-      >
-        <div
+    <div
+      className="contentContainer"
+      style={{
+        display: "flex",
+        flexDirection: imagePos === "right" ? "row-reverse" : "row",
+        alignItems: "center",
+        borderColor: imagePos === "right" ? chicagoRed : chicagoBlue,
+        borderBottom: "1px solid grey",
+        padding: 30,
+      }}
+    >
+      <div style={{ flex: 1, height: "100%", padding: 10 }}>
+        <img
+          src={imageUrl}
+          alt="Dynamic"
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
+            padding: 0,
+            margin: 0,
+            borderRadius: 20,
+            width: "100%",
+            height: "100%",
           }}
-        >
-          <h1 style={{ color: textColor }}>{title}</h1>
-        </div>
-      </NavLink>
+          onClick={() => navigate(titleLink)}
+        />
+      </div>
       <div
-        className="contentContainer"
         style={{
+          flex: 1,
           display: "flex",
-          flexDirection: imagePos === "right" ? "row-reverse" : "row",
-          alignItems: "center",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          height: "100%",
+          padding: 10,
         }}
       >
-        <div style={{ flex: 2 }}>
-          <img
-            src={imageUrl}
-            alt="Dynamic"
-            style={{
-              padding: 0,
-              margin: 0,
-              width: "100%",
-              height: "100%",
-            }}
-            onClick={() => navigate(titleLink)}
-          />
-        </div>
-        <div style={{ flex: 3 }}>
-          <p style={{ padding: 20, color: textColor }}>{text}</p>
-        </div>
+        <NavLink to={titleLink} style={{ textDecoration: "none" }}>
+          <Typography variant="h1" textAlign="center" padding={3}>
+            {title}
+          </Typography>
+        </NavLink>
+        <Typography variant="body1" textAlign={textAlign}>
+          {text}
+        </Typography>
       </div>
     </div>
   );

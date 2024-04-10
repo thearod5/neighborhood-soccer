@@ -1,7 +1,41 @@
+import { useTheme } from "@mui/material";
+import { useState } from "react";
+import Faq from "react-faq-component";
 import FAQData from "../content/faq.json";
+import { chicagoRed } from "../styles/constants";
 
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const config = {
+  // animate: true,
+  // arrowIcon: "V",
+  // tabFocus: true
+};
 const FAQ = () => {
-  const questions = FAQData["questions"];
+  const items: FAQItem[] = FAQData["questions"];
+  const data = {
+    title: "", //
+    rows: items.map((q) => {
+      return {
+        title: q["question"],
+        content: q["answer"],
+      };
+    }),
+  };
+  const theme = useTheme();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const faqWidth = isMobile ? "90%" : "75%";
+
+  const styles = {
+    bgColor: theme.palette.background.default,
+    titleTextColor: theme.palette.text.primary,
+    rowTitleColor: theme.palette.text.primary,
+    rowContentColor: theme.palette.text.secondary,
+    arrowColor: chicagoRed,
+  };
 
   return (
     <div>
@@ -12,16 +46,19 @@ const FAQ = () => {
           justifyContent: "center",
         }}
       >
-        <h1>Frequently Asked Questions</h1>
+        <h1 style={{ textAlign: "center" }}>Frequently Asked Questions</h1>
       </div>
-      {questions.map((q) => {
-        return (
-          <div key={q["question"]} style={{ padding: "20px" }}>
-            <h2>{q["question"]}</h2>
-            <div className="faq_answer">{q["answer"]}</div>
-          </div>
-        );
-      })}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ width: faqWidth }}>
+          <Faq data={data} styles={styles} config={config} />
+        </div>
+      </div>
     </div>
   );
 };

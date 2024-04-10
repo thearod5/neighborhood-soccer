@@ -1,7 +1,11 @@
 .image-gallery-image {
-  height: 100%;
+  max-height: 300px !important;
   width: 100% !important; /* Overrides any existing width */
   margin: 0 auto; /* Centers the gallery if needed */
   padding: 0; /* Removes any padding */
-  border: "1px solid red" !important;
+  border-radius: 20px;
+}
+
+.custom-gallery {
+  border-radius: 20px;
 }
