@@ -32,7 +32,12 @@ const NavBar = () => {
   }, []);
 
   return (
-    <AppBar position="fixed">
+    <AppBar
+      position="fixed"
+      sx={{
+        backgroundImage: "linear-gradient(to right, #6ad5fc, #bfe9ff)",
+      }}
+    >
       <Toolbar style={{ display: "flex", justifyContent: "space-around" }}>
         <div
           className="logo"
