@@ -1,15 +1,27 @@
-import { Typography, useTheme } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Typography } from "@mui/material";
+import React from "react";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useConstants } from "../context/constants";
 import "../styles/LandingSection.css";
 import { chicagoBlue, chicagoRed } from "../styles/constants";
 
+function toImages(imageData: string[]) {
+  return imageData.map((i) => {
+    return {
+      original: i,
+      thumbnail: i,
+    };
+  });
+}
 interface Props {
   title: string;
   titleLink: string;
-  imageUrl: string;
   text: string;
   imagePos: "left" | "right";
+  imageUrl?: string;
+  imageData?: string[];
 }
 
 const LandingSection: React.FC<Props> = ({
@@ -18,16 +30,12 @@ const LandingSection: React.FC<Props> = ({
   imageUrl,
   text,
   imagePos,
+  imageData,
 }) => {
-  const theme = useTheme();
   const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const textAlign = isMobile ? "center" : "left";
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const constants = useConstants();
+  const textAlign = constants.isMobile ? "center" : "left";
+
   return (
     <div
       className="contentContainer"
@@ -40,32 +48,51 @@ const LandingSection: React.FC<Props> = ({
         padding: 30,
       }}
     >
-      <div style={{ flex: 1, height: "100%", padding: 10 }}>
-        <img
-          src={imageUrl}
-          alt="Dynamic"
-          style={{
-            padding: 0,
-            margin: 0,
-            borderRadius: 20,
-            width: "90%",
-            maxHeight: "auto",
-          }}
-          onClick={() => navigate(titleLink)}
-        />
+      <div
+        style={{
+          flex: 1,
+          height: "100%",
+          padding: 10,
+        }}
+      >
+        {imageData !== undefined ? (
+          <ImageGallery
+            additionalClass="custom-gallery"
+            items={toImages(imageData)}
+            autoPlay={true}
+            showNav={false}
+            showThumbnails={false}
+            showPlayButton={false}
+            showFullscreenButton={false}
+            slideInterval={5000}
+          />
+        ) : (
+          <img
+            src={imageUrl}
+            alt="Dynamic"
+            style={{
+              padding: 0,
+              margin: 0,
+              borderRadius: 20,
+              width: "90%",
+              maxHeight: "auto",
+            }}
+            onClick={() => navigate(titleLink)}
+          />
+        )}
       </div>
       <div
         style={{
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
           height: "100%",
           padding: 10,
         }}
       >
         <NavLink to={titleLink} style={{ textDecoration: "none" }}>
-          <Typography variant="h1" textAlign="center" padding={3}>
+          <Typography variant="h1" textAlign="center">
             {title}
           </Typography>
         </NavLink>

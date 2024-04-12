@@ -1,13 +1,19 @@
 import { Typography } from "@mui/material";
-import { useState } from "react";
 import EventCard from "../components/EventCard";
 import EventData from "../content/events.json";
+import { useConstants } from "../context/constants";
 
 const EventsPage = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const constants = useConstants();
   const events = EventData["events"];
+
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <div
         style={{
           display: "flex",
@@ -22,11 +28,12 @@ const EventsPage = () => {
       <div
         style={{
           display: "flex",
-          flexDirection: isMobile ? "column" : "row",
+          flexDirection: constants.isMobile ? "column" : "row",
         }}
       >
         {events.map((e, i) => (
           <EventCard
+            key={e["name"]}
             name={e["name"]}
             link={e["link"]}
             location={e["location"]}

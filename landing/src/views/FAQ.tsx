@@ -1,7 +1,7 @@
-import { useTheme } from "@mui/material";
-import { useState } from "react";
+import { Typography, useTheme } from "@mui/material";
 import Faq from "react-faq-component";
 import FAQData from "../content/faq.json";
+import { useConstants } from "../context/constants";
 import { chicagoRed } from "../styles/constants";
 
 interface FAQItem {
@@ -26,8 +26,8 @@ const FAQ = () => {
     }),
   };
   const theme = useTheme();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const faqWidth = isMobile ? "90%" : "75%";
+  const constants = useConstants();
+  const faqWidth = constants.isMobile ? "90%" : "75%";
 
   const styles = {
     bgColor: theme.palette.background.default,
@@ -46,7 +46,9 @@ const FAQ = () => {
           justifyContent: "center",
         }}
       >
-        <h1 style={{ textAlign: "center" }}>Frequently Asked Questions</h1>
+        <Typography variant="h2" padding={3} textAlign="center">
+          Frequently Asked Questions
+        </Typography>
       </div>
       <div
         style={{

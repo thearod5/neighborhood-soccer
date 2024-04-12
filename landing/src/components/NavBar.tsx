@@ -1,48 +1,28 @@
-import { AppBar, Toolbar, Typography, useTheme } from "@mui/material";
-import { useEffect, useState } from "react";
+import { AppBar, Toolbar, Typography } from "@mui/material";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import NavData from "../content/nav.json";
+import { useConstants } from "../context/constants";
 import logo from "../res/logo-light.png";
 import "../styles/NavBar.css";
 
-const links = [
-  { link: "/", title: "Home" },
-  {
-    link: "/about",
-    title: "About Us",
-  },
-  {
-    link: "/events",
-    title: "Events",
-  },
-  {
-    link: "/faq",
-    title: "FAQs",
-  },
-];
 const NavBar = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const constants = useConstants();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const theme = useTheme();
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <AppBar
       position="fixed"
       sx={{
-        backgroundImage: "linear-gradient(to right, #6ad5fc, #bfe9ff)",
+        backgroundImage: "linear-gradient(to right, #6ad5fc, #ffa4b5)",
       }}
     >
       <Toolbar style={{ display: "flex", justifyContent: "space-around" }}>
         <div
           className="logo"
           onClick={() => {
-            if (isMobile) {
+            if (constants.isMobile) {
               setIsMenuOpen(!isMenuOpen);
             } else {
               navigate("/");
@@ -53,15 +33,15 @@ const NavBar = () => {
           <img src={logo} alt="Logo" />
           <Typography variant="h4">Chicago Neighborhood Soccer</Typography>
         </div>
-        {!isMobile || isMenuOpen ? (
+        {!constants.isMobile || isMenuOpen ? (
           <div
             style={{
               display: "flex",
-              flexDirection: isMobile ? "column" : "row",
+              flexDirection: constants.isMobile ? "column" : "row",
               top: 60,
             }}
           >
-            {links.map((link) => {
+            {NavData["pages"].map((link) => {
               return (
                 <div
                   key={link["link"]}

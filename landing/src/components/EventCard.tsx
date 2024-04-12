@@ -1,7 +1,8 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import React, { useState } from "react";
+import React from "react";
+import { useConstants } from "../context/constants";
 
 interface EventCardProps {
   name: string;
@@ -16,10 +17,13 @@ const EventCard: React.FC<EventCardProps> = ({
   location,
   description,
 }) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const constants = useConstants();
   return (
     <Card
-      sx={{ bgcolor: "background.paper", width: isMobile ? "90%" : "30%" }}
+      sx={{
+        bgcolor: "background.paper",
+        width: constants.isMobile ? "90%" : "30%",
+      }}
       style={{ margin: 20, borderRadius: 20 }}
     >
       <CardContent>
@@ -41,9 +45,6 @@ const EventCard: React.FC<EventCardProps> = ({
           {description}
         </Typography>
       </CardContent>
-      {/* <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions> */}
     </Card>
   );
 };

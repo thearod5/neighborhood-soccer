@@ -1,37 +1,48 @@
-import { useState } from "react";
+import { Typography } from "@mui/material";
 import AboutData from "../content/about.json";
+import { useConstants } from "../context/constants";
 
 const AboutUs = () => {
   const paragraphs = AboutData["paragraphs"];
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const pageWidth = isMobile ? "100%" : "60%";
+  const constants = useConstants();
+  const pageWidth = constants.isMobile ? "100%" : "60%";
 
   return (
-    <div style={{ padding: 20 }}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        <h1>About Us</h1>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        <div style={{ width: pageWidth }}>
-          {paragraphs.map((p, i) => {
-            return (
-              <p key={i} style={{ fontSize: 18 }}>
-                {p}
-              </p>
-            );
-          })}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+      }}
+    >
+      <div style={{ padding: 20 }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant="h1" padding={1} textAlign="center">
+            About Us
+          </Typography>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <div style={{ width: pageWidth }}>
+            {paragraphs.map((p, i) => {
+              return (
+                <p key={i} style={{ fontSize: 18 }}>
+                  {p}
+                </p>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

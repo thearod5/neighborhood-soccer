@@ -1,0 +1,17 @@
+{
+  "pages": [
+    { "link": "/", "title": "Home" },
+    {
+      "link": "/about",
+      "title": "About Us"
+    },
+    {
+      "link": "/events",
+      "title": "Events"
+    },
+    {
+      "link": "/faq",
+      "title": "FAQs"
+    }
+  ]
+}
