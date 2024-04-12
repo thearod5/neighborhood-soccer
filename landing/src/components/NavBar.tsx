@@ -18,53 +18,68 @@ const NavBar = () => {
         backgroundImage: "linear-gradient(to right, #6ad5fc, #ffa4b5)",
       }}
     >
-      <Toolbar style={{ display: "flex", justifyContent: "space-around" }}>
-        <div
-          className="logo"
-          onClick={() => {
-            if (constants.isMobile) {
-              setIsMenuOpen(!isMenuOpen);
-            } else {
-              navigate("/");
-              setIsMenuOpen(false);
-            }
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
+        <Toolbar
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: constants.maxWidth,
           }}
         >
-          <img src={logo} alt="Logo" />
-          <Typography variant="h4">Chicago Neighborhood Soccer</Typography>
-        </div>
-        {!constants.isMobile || isMenuOpen ? (
           <div
-            style={{
-              display: "flex",
-              flexDirection: constants.isMobile ? "column" : "row",
-              top: 60,
+            className="logo"
+            onClick={() => {
+              if (constants.isMobile) {
+                setIsMenuOpen(!isMenuOpen);
+              } else {
+                navigate("/");
+                setIsMenuOpen(false);
+              }
             }}
           >
-            {NavData["pages"].map((link) => {
-              return (
-                <div
-                  key={link["link"]}
-                  className="nav-link"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    navigate(link["link"]);
-                  }}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    fontSize: 18,
-                    padding: "10px",
-                  }}
-                >
-                  {link["title"]}
-                </div>
-              );
-            })}
+            <img src={logo} alt="Logo" />
+            <Typography variant="h4">Chicago Neighborhood Soccer</Typography>
           </div>
-        ) : null}
-      </Toolbar>
+          {!constants.isMobile || isMenuOpen ? (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: constants.isMobile ? "column" : "row",
+                justifyContent: "space-around",
+                top: 60,
+              }}
+            >
+              {NavData["pages"].map((link) => {
+                return (
+                  <div
+                    key={link["link"]}
+                    className="nav-link"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      navigate(link["link"]);
+                    }}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      fontSize: 18,
+                      padding: "10px",
+                    }}
+                  >
+                    {link["title"]}
+                  </div>
+                );
+              })}
+            </div>
+          ) : null}
+        </Toolbar>
+      </div>
     </AppBar>
   );
 };
