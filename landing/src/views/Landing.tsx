@@ -4,23 +4,7 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import LandingSection from "../components/LandingSection";
 import "../styles/Landing.css";
-const FamilyImage = "https://pbs.twimg.com/media/Dm_POWdXcAEEO8C.jpg";
-const DefaultImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSduh_JOy3ttfTMMrciqOfpgqKYzh8SS2DN4xNf6X2Xg&s";
-const images = [
-  {
-    original: "https://pbs.twimg.com/media/Dm_POWdXcAEEO8C.jpg",
-    thumbnail: "https://pbs.twimg.com/media/Dm_POWdXcAEEO8C.jpg",
-  },
-  {
-    original: "https://picsum.photos/id/1015/1000/600/",
-    thumbnail: "https://picsum.photos/id/1015/250/150/",
-  },
-  {
-    original: "https://picsum.photos/id/1019/1000/600/",
-    thumbnail: "https://picsum.photos/id/1019/250/150/",
-  },
-];
+import { EventImage, FamilyImage, images } from "../styles/images";
 
 const Landing = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -58,7 +42,7 @@ const Landing = () => {
       <LandingSection
         title="Events"
         titleLink="/events"
-        imageUrl={DefaultImage}
+        imageUrl={EventImage}
         text="Whether you're a seasoned player or just looking to kick the ball
         around with some new friends, we've got you covered. Dive into the
         action with co-ed futsal and soccer pick-up games, where you can

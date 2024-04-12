@@ -48,8 +48,8 @@ const LandingSection: React.FC<Props> = ({
             padding: 0,
             margin: 0,
             borderRadius: 20,
-            width: "100%",
-            height: "100%",
+            width: "auto",
+            maxHeight: 400,
           }}
           onClick={() => navigate(titleLink)}
         />
