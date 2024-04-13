@@ -15,7 +15,7 @@ const NavBar = () => {
     <AppBar
       position="fixed"
       sx={{
-        backgroundImage: "linear-gradient(to right, #6ad5fc, #ffa4b5)",
+        backgroundImage: "linear-gradient(to left, #6ad5fc, #bee9f7)",
       }}
     >
       <div
