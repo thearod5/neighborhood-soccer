@@ -1,11 +1,17 @@
 import { Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { MeetupEvent, getEvents } from "../api/event";
 import EventCard from "../components/EventCard";
-import EventData from "../content/events.json";
 import { useConstants } from "../context/constants";
 
 const EventsPage = () => {
   const constants = useConstants();
-  const events = EventData["events"];
+  const [events, setEvents] = useState<MeetupEvent[]>([]);
+  const isMobile = constants.isMobile;
+
+  useEffect(() => {
+    getEvents().then((data) => setEvents(data));
+  }, []);
 
   return (
     <div
@@ -17,7 +23,6 @@ const EventsPage = () => {
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
           justifyContent: "center",
         }}
       >
@@ -28,18 +33,28 @@ const EventsPage = () => {
       <div
         style={{
           display: "flex",
-          flexDirection: constants.isMobile ? "column" : "row",
+          flexDirection: "row",
+          justifyContent: "center",
         }}
       >
-        {events.map((e, i) => (
-          <EventCard
-            key={e["name"]}
-            name={e["name"]}
-            link={e["link"]}
-            location={e["location"]}
-            description={e["description"]}
-          />
-        ))}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {events.map((e) => (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
+              <EventCard key={e["id"]} event={e} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

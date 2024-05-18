@@ -9,6 +9,7 @@ import React, {
 
 const ConfigConstants = {
   maxWidth: 1000,
+  eventCardSize: 225,
 };
 
 type ConfigContextType = typeof ConfigConstants & {
