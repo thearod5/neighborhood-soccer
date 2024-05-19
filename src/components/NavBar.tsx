@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavData from "../content/nav.json";
 import { useConstants } from "../context/constants";
-import logo from "../res/logo-light.png";
+import logo from "../res/logo-star.png";
 import "../styles/NavBar.css";
 
 const NavBar = () => {
@@ -44,7 +44,9 @@ const NavBar = () => {
             }}
           >
             <img src={logo} alt="Logo" />
-            <Typography variant="h4">Chicago Neighborhood Soccer</Typography>
+            <Typography variant="h2" style={{ fontSize: 24 }}>
+              Chicago Neighborhood Soccer
+            </Typography>
           </div>
           {!constants.isMobile || isMenuOpen ? (
             <div

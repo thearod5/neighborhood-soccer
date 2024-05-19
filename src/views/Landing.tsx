@@ -4,8 +4,8 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import LandingSection from "../components/LandingSection";
 import LandingData from "../content/landing.json";
 import { useConstants } from "../context/constants";
-import "../styles/Landing.css";
 import { EventImages, FamilyImage, images } from "../styles/images";
+import "../styles/Landing.css";
 
 const Landing = () => {
   const Config = useConstants();
@@ -36,7 +36,7 @@ const Landing = () => {
             }}
           >
             <Typography
-              variant="h2"
+              variant="h4"
               textAlign="center"
               padding={6}
               component="div"

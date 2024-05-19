@@ -30,7 +30,8 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const height = isMobile ? constants.eventCardSize : 400;
   const width = isMobile ? 300 : "60%";
   const handleCardClick = () => {
-    window.open(link, "_blank");
+    const options = "noopener,noreferrer";
+    window.open(link, "_blank", options);
   };
   const ticketsLeft = event["spots"] - event["spotsTaken"];
   const ticketsLabel =

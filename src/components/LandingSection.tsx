@@ -4,8 +4,8 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useConstants } from "../context/constants";
-import "../styles/LandingSection.css";
 import { chicagoBlue, chicagoRed } from "../styles/constants";
+import "../styles/LandingSection.css";
 
 function toImages(imageData: string[]) {
   return imageData.map((i) => {
@@ -92,7 +92,11 @@ const LandingSection: React.FC<Props> = ({
         }}
       >
         <NavLink to={titleLink} style={{ textDecoration: "none" }}>
-          <Typography variant="h1" textAlign="center">
+          <Typography
+            variant="h1"
+            textAlign="center"
+            style={{ marginBottom: 25 }}
+          >
             {title}
           </Typography>
         </NavLink>
