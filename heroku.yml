@@ -1,4 +1,4 @@
 # Define the Docker setup
 build:
   docker:
-    web: landing/Dockerfile
+    web: Dockerfile

@@ -36,3 +36,6 @@ yarn-error.*
 *.tsbuildinfo
 
 images
+node_modules
+build
+secrets

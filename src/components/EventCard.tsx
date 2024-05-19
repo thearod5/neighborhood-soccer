@@ -32,6 +32,11 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const handleCardClick = () => {
     window.open(link, "_blank");
   };
+  const ticketsLeft = event["spots"] - event["spotsTaken"];
+  const ticketsLabel =
+    ticketsLeft > 0
+      ? event["spotsTaken"] + " Going. " + ticketsLeft + " Left."
+      : "Sold Out.";
   return (
     <Card
       sx={{
@@ -114,7 +119,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
                 gutterBottom
                 noWrap
               >
-                {event["spotsTaken"]} / {event["spots"]}
+                {ticketsLabel}
               </Typography>
             </Box>
             <Box
