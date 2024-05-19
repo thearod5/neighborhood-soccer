@@ -1,6 +1,6 @@
 # Use an official lightweight Node.js image.
 # https://hub.docker.com/_/node
-FROM public.ecr.aws/docker/library/node:18-buster-slim
+FROM node:18
 
 WORKDIR /app
 
