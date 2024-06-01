@@ -51,8 +51,10 @@ const LandingSection: React.FC<Props> = ({
       <div
         style={{
           flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
           height: "100%",
-          padding: 10,
         }}
       >
         {imageData !== undefined ? (
@@ -74,7 +76,7 @@ const LandingSection: React.FC<Props> = ({
               padding: 0,
               margin: 0,
               borderRadius: 20,
-              width: "90%",
+              width: "100%",
               maxHeight: "auto",
             }}
             onClick={() => navigate(titleLink)}
