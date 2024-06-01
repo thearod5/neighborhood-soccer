@@ -6,6 +6,7 @@ const commonTheme = {
     fontFamily: "roboto",
     h1: {
       fontSize: "2.5rem", // Example font size for h1 in light theme
+      fontWeight: "bold", // Make h1 bold
     },
     h2: {
       fontSize: "2rem", // Example font size for h1 in light theme
@@ -17,7 +18,13 @@ const commonTheme = {
       fontSize: "1.25rem", // Example font size for h1 in light theme
     },
     h6: {
-      fontSize: "1rem", // Example font size for h1 in light theme
+      fontSize: "1.25rem", // Example font size for h1 in light theme
+    },
+    body1: {
+      fontSize: "1.1rem",
+    },
+    body2: {
+      fontSize: "0.875rem",
     },
   },
 };

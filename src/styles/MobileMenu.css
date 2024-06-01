@@ -1,0 +1,17 @@
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}

@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { FaDiscord, FaInstagram, FaMeetup } from "react-icons/fa"; // Importing icons
 import { chicagoRed } from "../styles/constants";
 
@@ -42,11 +43,10 @@ const Footer: React.FC<FooterProps> = (props) => {
           <FaDiscord size={50} color={chicagoRed} />
         </a>
       </div>
-      {/* Copyright information */}
-      <p>
+      <Typography variant="body2">
         &copy; {new Date().getFullYear()} Chicago Neighborhood Soccer. All
         rights reserved.
-      </p>
+      </Typography>
     </footer>
   );
 };

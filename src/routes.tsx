@@ -5,7 +5,7 @@ import AboutUs from "./views/AboutUs";
 import Error from "./views/Error";
 import EventsPage from "./views/Events";
 import FAQPage from "./views/FAQ";
-import Landing from "./views/Landing";
+import Home from "./views/Home";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Landing />,
+        element: <Home />,
       },
       {
         index: true,

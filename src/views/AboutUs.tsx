@@ -34,7 +34,7 @@ const AboutUs = () => {
             justifyContent: "center",
           }}
         >
-          <div style={{ width: pageWidth }}>
+          <Typography style={{ width: pageWidth }} variant="body1">
             {paragraphs.map((p, i) => {
               return (
                 <p key={i} style={{ fontSize: 18 }}>
@@ -42,7 +42,7 @@ const AboutUs = () => {
                 </p>
               );
             })}
-          </div>
+          </Typography>
         </div>
       </div>
     </div>

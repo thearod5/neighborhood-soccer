@@ -3,12 +3,10 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import LandingSection from "../components/LandingSection";
 import LandingData from "../content/landing.json";
-import { useConstants } from "../context/constants";
 import { EventImages, FamilyImage, images } from "../styles/images";
 import "../styles/Landing.css";
 
 const Landing = () => {
-  const Config = useConstants();
   return (
     <div
       style={{
@@ -36,7 +34,7 @@ const Landing = () => {
             }}
           >
             <Typography
-              variant="h4"
+              variant="h2"
               textAlign="center"
               padding={6}
               component="div"
