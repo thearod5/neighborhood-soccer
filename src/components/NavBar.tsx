@@ -81,20 +81,14 @@ const NavBar = () => {
               }}
             >
               {NavData["pages"].map((link) => (
-                <div
-                  key={link["link"]}
-                  className="nav-link"
+                <Typography
+                  variant="h6"
                   onClick={() => navigate(link["link"])}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    fontSize: 18,
-                    padding: "10px",
-                  }}
+                  style={{ fontWeight: "bold", paddingRight: 20 }}
+                  className="nav-link"
                 >
                   {link["title"]}
-                </div>
+                </Typography>
               ))}
             </div>
           )}

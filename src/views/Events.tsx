@@ -1,17 +1,36 @@
-import { Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { MeetupEvent, getEvents } from "../api/event";
+import { getEvents, MeetupEvent } from "../api/event";
 import EventCard from "../components/EventCard";
-import { useConstants } from "../context/constants";
 
 const EventsPage = () => {
-  const constants = useConstants();
   const [events, setEvents] = useState<MeetupEvent[]>([]);
-  const isMobile = constants.isMobile;
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getEvents().then((data) => setEvents(data));
+    setLoading(true);
+    getEvents()
+      .then((data) => {
+        setEvents(data);
+        setLoading(false);
+      })
+      .catch((e) => setLoading(false));
   }, []);
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          padding: 100,
+        }}
+      >
+        <CircularProgress color="secondary" />
+      </div>
+    );
+  }
 
   return (
     <div

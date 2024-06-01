@@ -10,10 +10,9 @@ interface FAQItem {
 }
 
 const config = {
-  // animate: true,
-  // arrowIcon: "V",
-  // tabFocus: true
+  animate: true,
 };
+
 const FAQ = () => {
   const items: FAQItem[] = FAQData["questions"];
   const data = {

@@ -37,9 +37,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ open, onClose }) => {
                 onClose();
               }}
             >
-              <Typography variant="body1" style={{ fontWeight: "bold" }}>
-                {link["title"]}
-              </Typography>
+              <Typography variant="body1">{link["title"]}</Typography>
             </MenuItem>
           ))}
         </div>

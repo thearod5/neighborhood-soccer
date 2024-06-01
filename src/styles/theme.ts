@@ -32,6 +32,9 @@ const commonTheme = {
 export const lightMode = createTheme({
   ...commonTheme,
   palette: {
+    secondary: {
+      main: chicagoRed,
+    },
     mode: "light",
     background: {
       default: "white",
