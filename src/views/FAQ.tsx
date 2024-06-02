@@ -43,9 +43,11 @@ const FAQ = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
+          paddingTop: 20,
+          paddingBottom: 20,
         }}
       >
-        <Typography variant="h2" padding={3} textAlign="center">
+        <Typography variant="h1" textAlign="center">
           Frequently Asked Questions
         </Typography>
       </div>

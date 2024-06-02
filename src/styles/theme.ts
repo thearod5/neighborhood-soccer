@@ -11,6 +11,9 @@ const commonTheme = {
     h2: {
       fontSize: "2rem", // Example font size for h1 in light theme
     },
+    h3: {
+      fontSize: "1.75rem",
+    },
     h4: {
       fontSize: "1.5rem", // Example font size for h1 in light theme
     },

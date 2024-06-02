@@ -44,7 +44,6 @@ const LandingSection: React.FC<Props> = ({
         flexDirection: imagePos === "right" ? "row-reverse" : "row",
         alignItems: "center",
         borderColor: imagePos === "right" ? chicagoRed : chicagoBlue,
-        borderBottom: "1px solid grey",
         padding: 30,
       }}
     >

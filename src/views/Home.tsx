@@ -30,7 +30,6 @@ const Landing = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
-              borderBottom: "1px solid grey",
             }}
           >
             <Typography
