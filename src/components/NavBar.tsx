@@ -10,7 +10,7 @@ import "../styles/NavBar.css";
 
 const NavBar = () => {
   const constants = useConstants();
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleMenuOpen = () => {
